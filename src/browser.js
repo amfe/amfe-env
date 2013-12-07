@@ -21,7 +21,7 @@
             version:RegExp.$1
         }
     }
-    else if((!window.navigator.userAgent.match(/Version\/4\.0/) || !window.navigator.userAgent.match(/Android/) ) 
+    else if((!window.navigator.userAgent.match(/Version\//) || !window.navigator.userAgent.match(/Android/) ) 
         && window.navigator.userAgent.match(/Chrome\/([\d\.]+)/)) {
         lib.env.browser = {
             name:"Chrome",
@@ -57,6 +57,9 @@
         }
     }
     
-    
+    if(lib.version ) {
+        var Version = lib.version();
+        lib.env.browser.version = new Version(lib.env.browser.version);
+    }
     
 })(window, window['lib'] || (window['lib'] = {}));

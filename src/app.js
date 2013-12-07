@@ -10,15 +10,11 @@
         var params = RegExp.$7.split("&");
         for(var i = 0 ; i < params.length; i++) {
             params[i] = params[i].split("=");
-            if(params[i][0]=="ttid") {
+            if(params[i][0] === "ttid") {
                 ttid = decodeURIComponent(params[i][1]);
             }
         }
     }
-    
-
-    
-    
     lib.env.ttid = ttid
 
     
@@ -30,10 +26,14 @@
             version:RegExp.$2,
             platform:RegExp.$1
         }
+        if(lib.version ) {
+            var Version = lib.version();
+            lib.env.taobaoApp.version = new Version(lib.env.taobaoApp.version);
+        }
     } else {
         lib.env.taobaoApp = null;
     }
 
-    
+
 
 })(window, window['lib'] || (window['lib'] = {}));

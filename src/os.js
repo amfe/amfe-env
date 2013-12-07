@@ -22,6 +22,10 @@
             version:"0.0"
         }
     }
-    //iTouch?
+    
+    if(lib.version ) {
+        var Version = lib.version();
+        lib.env.os.version = new Version(lib.env.os.version);
+    }
     
 })(window, window['lib'] || (window['lib'] = {}));
