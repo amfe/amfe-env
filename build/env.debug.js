@@ -60,7 +60,8 @@
             version:RegExp.$1
         }
     }
-    else if(window.navigator.userAgent.match(/Chrome\/([\d\.]+)/)) {
+    else if((!window.navigator.userAgent.match(/Version\/4\.0/) || !window.navigator.userAgent.match(/Android/) ) 
+        && window.navigator.userAgent.match(/Chrome\/([\d\.]+)/)) {
         lib.env.browser = {
             name:"Chrome",
             version:RegExp.$1
@@ -72,7 +73,7 @@
             version:RegExp.$1
         }
     }
-    else if(window.navigator.userAgent.match(/iPhone|iPad/)) {
+    else if(window.navigator.userAgent.match(/iPhone|iPad|iPod/)) {
         if(window.navigator.userAgent.match(/Safari/)) {
             window.navigator.userAgent.match(/Version\/([\d\.]+)/)
             lib.env.browser = {
@@ -108,7 +109,7 @@
             version:RegExp.$1
         }
     }
-    else if(window.navigator.userAgent.match(/iPhone|iPad/)) {
+    else if(window.navigator.userAgent.match(/iPhone|iPad|iPod/)) {
         window.navigator.userAgent.match(/OS ([\d_]+) like Mac OS X/);
 
         lib.env.os = {

@@ -8,7 +8,7 @@
             version:RegExp.$1
         }
     }
-    else if(window.navigator.userAgent.match(/iPhone|iPad/)) {
+    else if(window.navigator.userAgent.match(/iPhone|iPad|iPod/)) {
         window.navigator.userAgent.match(/OS ([\d_]+) like Mac OS X/);
 
         lib.env.os = {
