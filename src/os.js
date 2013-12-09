@@ -18,7 +18,7 @@
     }
     else {
         lib.env.os = {
-            name:"desktop",
+            name:"unknown",
             version:"0.0"
         }
     }

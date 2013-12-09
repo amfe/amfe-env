@@ -2,13 +2,7 @@
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    if(window.navigator.userAgent.match(/UCWEB([\d\.]+)/)) {
-        lib.env.browser = {
-            name:"UC",
-            version:RegExp.$1
-        }
-    }
-    else if(window.navigator.userAgent.match(/UCBrowser\/([\d\.]+)/)) {
+    if(window.navigator.userAgent.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/)) {
         lib.env.browser = {
             name:"UC",
             version:RegExp.$1
