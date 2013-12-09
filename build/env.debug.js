@@ -82,19 +82,21 @@
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    window.location.href.match(/^(https?):\/\/(?:([^:]+)(?::([^@]+))@)?([^:\/]+)(?:\:([\d]+))?(\/[^?;]+)?(?:\?([^?;\/#]+))?(?:#([^#]+))?$/)
+    
     
     var ttid = "";
-    if(RegExp.$7) {
-        var params = RegExp.$7.split("&");
+    
+    var srch = window.location.search.replace(/^\?/,"")
+    
+    lib.env.params = {};
+    
+    if(srch) {
+        var params = srch.split("&");
         for(var i = 0 ; i < params.length; i++) {
             params[i] = params[i].split("=");
-            if(params[i][0] === "ttid") {
-                ttid = decodeURIComponent(params[i][1]);
-            }
+            lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
         }
     }
-    lib.env.ttid = ttid
 
     
     
@@ -120,13 +122,7 @@
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    if(window.navigator.userAgent.match(/UCWEB([\d\.]+)/)) {
-        lib.env.browser = {
-            name:"UC",
-            version:RegExp.$1
-        }
-    }
-    else if(window.navigator.userAgent.match(/UCBrowser\/([\d\.]+)/)) {
+    if(window.navigator.userAgent.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/)) {
         lib.env.browser = {
             name:"UC",
             version:RegExp.$1
@@ -201,7 +197,7 @@
     }
     else {
         lib.env.os = {
-            name:"desktop",
+            name:"unknown",
             version:"0.0"
         }
     }

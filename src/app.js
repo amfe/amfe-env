@@ -3,19 +3,21 @@
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    window.location.href.match(/^(https?):\/\/(?:([^:]+)(?::([^@]+))@)?([^:\/]+)(?:\:([\d]+))?(\/[^?;]+)?(?:\?([^?;\/#]+))?(?:#([^#]+))?$/)
+    
     
     var ttid = "";
-    if(RegExp.$7) {
-        var params = RegExp.$7.split("&");
+    
+    var srch = window.location.search.replace(/^\?/,"")
+    
+    lib.env.params = {};
+    
+    if(srch) {
+        var params = srch.split("&");
         for(var i = 0 ; i < params.length; i++) {
             params[i] = params[i].split("=");
-            if(params[i][0] === "ttid") {
-                ttid = decodeURIComponent(params[i][1]);
-            }
+            lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
         }
     }
-    lib.env.ttid = ttid
 
     
     
