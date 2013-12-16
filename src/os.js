@@ -6,24 +6,26 @@
     
     if(ua.match(/Android ([\d\.]+)/)) {
         lib.env.os = {
-            name: "Android",
+            name: 'Android',
             isAndroid: true,
             version: RegExp.$1
         }
     } else if(ua.match(/(iPhone|iPad|iPod)/)) {
+        var name = RegExp.$1;
+
         ua.match(/OS ([\d_]+) like Mac OS X/);
 
         lib.env.os = {
-            name:"iOS",
-            isiPhone: (RegExp.$1 === 'iPhone' || RegExp.$1 === 'iPod'),
-            isiPad: RegExp.$1 === 'iPad',
-            isiOS: true,
-            version: RegExp.$1.split("_").join(".")
+            name: name,
+            isIPhone: (name === 'iPhone' || name === 'iPod'),
+            isIPad: name === 'iPad',
+            isIOS: true,
+            version: RegExp.$1.split('_').join('.')
         }
     } else {
         lib.env.os = {
-            name:"unknown",
-            version:"0.0"
+            name:'unknown',
+            version:'0.0'
         }
     }
     

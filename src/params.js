@@ -2,9 +2,9 @@
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    var srch = window.location.search.replace(/^\?/,'')
+    var search = window.location.search.replace(/^\?/,'')
     lib.env.params = {};
-    if(srch) {
+    if(search) {
         var params = srch.split('&');
         for(var i = 0 ; i < params.length; i++) {
             params[i] = params[i].split('=');

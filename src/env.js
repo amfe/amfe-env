@@ -1,5 +1,5 @@
 //@require version
-//@require param
+//@require params
 //@require app
 //@require browser
 //@require os
