@@ -11,8 +11,8 @@
     if(uaMatched || ttidMatched) {
 
         lib.env.taobaoApp = {
-            version: uaMatched[2],
-            platform: uaMatched[1].replace(/^ip/, 'iP').replace(/^a/, 'A')
+            version: uaMatched[2] || ttidMatched[2],
+            platform: (uaMatched[1] || uaMatched[1]).replace(/^ip/, 'iP').replace(/^a/, 'A')
         }
 
         if(lib.version) {
