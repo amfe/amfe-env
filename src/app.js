@@ -1,41 +1,24 @@
-
 ;
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    
-    
-    var ttid = "";
-    
-    var srch = window.location.search.replace(/^\?/,"")
-    
-    lib.env.params = {};
-    
-    if(srch) {
-        var params = srch.split("&");
-        for(var i = 0 ; i < params.length; i++) {
-            params[i] = params[i].split("=");
-            lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
-        }
-    }
+    var ttid = lib.env.param['ttid'];
+    var ua = window.navigator.userAgent;
+    var reg = /@taobao_(iphone|android|ipad)_([\d\.]+)/;
+    var uaMatched = ua.match(reg);
+    var ttidMatched = ttid && ttid.match(reg);
 
-    
-    
-    if(window.navigator.userAgent.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)
-        || ttid && ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
+    if(uaMatched || ttidMatched) {
 
         lib.env.taobaoApp = {
-            version:RegExp.$2,
-            platform:RegExp.$1
+            version: uaMatched[2] || ttidMatched[2],
+            platform: (uaMatched[1] || uaMatched[1]).replace(/^ip/, 'iP').replace(/^a/, 'A')
         }
-        if(lib.version ) {
+
+        if(lib.version) {
             var Version = lib.version();
             lib.env.taobaoApp.version = new Version(lib.env.taobaoApp.version);
         }
-    } else {
-        lib.env.taobaoApp = null;
     }
-
-
 
 })(window, window['lib'] || (window['lib'] = {}));

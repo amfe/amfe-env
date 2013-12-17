@@ -1,4 +1,5 @@
-//@require version.js
-//@require app.js
-//@require browser.js
-//@require os.js
+//@require version
+//@require params
+//@require app
+//@require browser
+//@require os

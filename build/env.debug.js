@@ -77,101 +77,100 @@
 
     
 })(window, window['lib'] || (window['lib'] = {}));
-
 ;
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    
-    
-    var ttid = "";
-    
-    var srch = window.location.search.replace(/^\?/,"")
-    
+    var search = window.location.search.replace(/^\?/,'')
     lib.env.params = {};
-    
-    if(srch) {
-        var params = srch.split("&");
+    if(search) {
+        var params = srch.split('&');
         for(var i = 0 ; i < params.length; i++) {
-            params[i] = params[i].split("=");
+            params[i] = params[i].split('=');
             lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
         }
     }
-
-    
-    
-    if(window.navigator.userAgent.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)
-        || ttid && ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
-
-        lib.env.taobaoApp = {
-            version:RegExp.$2,
-            platform:RegExp.$1
-        }
-        if(lib.version ) {
-            var Version = lib.version();
-            lib.env.taobaoApp.version = new Version(lib.env.taobaoApp.version);
-        }
-    } else {
-        lib.env.taobaoApp = null;
-    }
-
-
 
 })(window, window['lib'] || (window['lib'] = {}));
 ;
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    if(window.navigator.userAgent.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/)) {
-        lib.env.browser = {
-            name:"UC",
-            version:RegExp.$1
-        }
-    }
-    else if(window.navigator.userAgent.match(/MQQBrowser\/([\d\.]+)/)) {
+    var ttid = lib.env.param['ttid'];
+    var ua = window.navigator.userAgent;
+    var reg = /@taobao_(iphone|android|ipad)_([\d\.]+)/;
+    var uaMatched = ua.match(reg);
+    var ttidMatched = ttid && ttid.match(reg);
 
-        lib.env.browser = {
-            name:"QQ",
-            version:RegExp.$1
+    if(uaMatched || ttidMatched) {
+
+        lib.env.taobaoApp = {
+            version: uaMatched[2] || ttidMatched[2],
+            platform: (uaMatched[1] || uaMatched[1]).replace(/^ip/, 'iP').replace(/^a/, 'A')
+        }
+
+        if(lib.version) {
+            var Version = lib.version();
+            lib.env.taobaoApp.version = new Version(lib.env.taobaoApp.version);
         }
     }
-    else if((!window.navigator.userAgent.match(/Version\//) || !window.navigator.userAgent.match(/Android/) ) 
-        && window.navigator.userAgent.match(/Chrome\/([\d\.]+)/)) {
+
+})(window, window['lib'] || (window['lib'] = {}));
+;
+(function(window, lib) {
+    lib.env = lib.env || {};
+
+    var ua = ua;
+    
+    if(ua.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/)) {
         lib.env.browser = {
-            name:"Chrome",
-            version:RegExp.$1
+            name: 'UC',
+            isUC: true,
+            version: RegExp.$1
         }
-    }
-    else if(window.navigator.userAgent.match(/Mobile Safari/) && window.navigator.userAgent.match(/Android ([\d\.]+)/)) {
+    } else if(ua.match(/MQQBrowser\/([\d\.]+)/)) {
         lib.env.browser = {
-            name:"Android",
-            version:RegExp.$1
+            name: 'QQ',
+            isQQ: true,
+            version: RegExp.$1
         }
-    }
-    else if(window.navigator.userAgent.match(/iPhone|iPad|iPod/)) {
-        if(window.navigator.userAgent.match(/Safari/)) {
-            window.navigator.userAgent.match(/Version\/([\d\.]+)/)
+    } else if((!ua.match(/Version\//) || !ua.match(/Android/) ) 
+        && ua.match(/Chrome\/([\d\.]+)/)) {
+        lib.env.browser = {
+            name: 'Chrome',
+            isChrome: true,
+            version: RegExp.$1
+        }
+    } else if(ua.match(/Mobile Safari/) && ua.match(/Android ([\d\.]+)/)) {
+        lib.env.browser = {
+            name: 'Android',
+            isAndroid: true,
+            version: RegExp.$1
+        }
+    } else if(ua.match(/iPhone|iPad|iPod/)) {
+        if(ua.match(/Safari/)) {
+            ua.match(/Version\/([\d\.]+)/)
             lib.env.browser = {
-                name:"Safari",
-                version:RegExp.$1
+                name: 'Safari',
+                isSafari: true,
+                version: RegExp.$1
+            }
+        } else {
+            ua.match(/OS ([\d_]+) like Mac OS X/);
+            lib.env.browser = {
+                name: 'iOS Webview',
+                isWebview: true,
+                version: RegExp.$1.split('_').join('.')
             }
         }
-        else {
-            window.navigator.userAgent.match(/OS ([\d_]+) like Mac OS X/);
-            lib.env.browser = {
-                name:"iOS Webview",
-                version:RegExp.$1.split("_").join(".")
-            }
-        }
-    }
-    else {
+    } else {
         lib.env.browser = {
-            name:"unknown",
-            version:"0.0"
+            name:'unknown',
+            version:'0.0'
         }
     }
     
-    if(lib.version ) {
+    if(lib.version) {
         var Version = lib.version();
         lib.env.browser.version = new Version(lib.env.browser.version);
     }
@@ -180,29 +179,35 @@
 ;
 (function(window, lib) {
     lib.env = lib.env || {};
+
+    var ua = window.navigator.userAgent;
     
-    if(window.navigator.userAgent.match(/Android ([\d\.]+)/)) {
+    if(ua.match(/Android ([\d\.]+)/)) {
         lib.env.os = {
-            name:"Android",
-            version:RegExp.$1
+            name: 'Android',
+            isAndroid: true,
+            version: RegExp.$1
         }
-    }
-    else if(window.navigator.userAgent.match(/iPhone|iPad|iPod/)) {
-        window.navigator.userAgent.match(/OS ([\d_]+) like Mac OS X/);
+    } else if(ua.match(/(iPhone|iPad|iPod)/)) {
+        var name = RegExp.$1;
+
+        ua.match(/OS ([\d_]+) like Mac OS X/);
 
         lib.env.os = {
-            name:"iOS",
-            version:RegExp.$1.split("_").join(".")
+            name: name,
+            isIPhone: (name === 'iPhone' || name === 'iPod'),
+            isIPad: name === 'iPad',
+            isIOS: true,
+            version: RegExp.$1.split('_').join('.')
         }
-    }
-    else {
+    } else {
         lib.env.os = {
-            name:"unknown",
-            version:"0.0"
+            name:'unknown',
+            version:'0.0'
         }
     }
     
-    if(lib.version ) {
+    if(lib.version) {
         var Version = lib.version();
         lib.env.os.version = new Version(lib.env.os.version);
     }

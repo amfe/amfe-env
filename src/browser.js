@@ -1,57 +1,58 @@
 ;
 (function(window, lib) {
     lib.env = lib.env || {};
-    
-    if(window.navigator.userAgent.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/)) {
-        lib.env.browser = {
-            name:"UC",
-            version:RegExp.$1
-        }
-    }
-    else if(window.navigator.userAgent.match(/MQQBrowser\/([\d\.]+)/)) {
 
+    var ua = ua;
+    
+    if(ua.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/)) {
         lib.env.browser = {
-            name:"QQ",
-            version:RegExp.$1
+            name: 'UC',
+            isUC: true,
+            version: RegExp.$1
         }
-    }
-    else if((!window.navigator.userAgent.match(/Version\//) || !window.navigator.userAgent.match(/Android/) ) 
-        && window.navigator.userAgent.match(/Chrome\/([\d\.]+)/)) {
+    } else if(ua.match(/MQQBrowser\/([\d\.]+)/)) {
         lib.env.browser = {
-            name:"Chrome",
-            version:RegExp.$1
+            name: 'QQ',
+            isQQ: true,
+            version: RegExp.$1
         }
-    }
-    else if(window.navigator.userAgent.match(/Mobile Safari/) && window.navigator.userAgent.match(/Android ([\d\.]+)/)) {
+    } else if((!ua.match(/Version\//) || !ua.match(/Android/) ) 
+        && ua.match(/Chrome\/([\d\.]+)/)) {
         lib.env.browser = {
-            name:"Android",
-            version:RegExp.$1
+            name: 'Chrome',
+            isChrome: true,
+            version: RegExp.$1
         }
-    }
-    else if(window.navigator.userAgent.match(/iPhone|iPad|iPod/)) {
-        if(window.navigator.userAgent.match(/Safari/)) {
-            window.navigator.userAgent.match(/Version\/([\d\.]+)/)
+    } else if(ua.match(/Mobile Safari/) && ua.match(/Android ([\d\.]+)/)) {
+        lib.env.browser = {
+            name: 'Android',
+            isAndroid: true,
+            version: RegExp.$1
+        }
+    } else if(ua.match(/iPhone|iPad|iPod/)) {
+        if(ua.match(/Safari/)) {
+            ua.match(/Version\/([\d\.]+)/)
             lib.env.browser = {
-                name:"Safari",
-                version:RegExp.$1
+                name: 'Safari',
+                isSafari: true,
+                version: RegExp.$1
+            }
+        } else {
+            ua.match(/OS ([\d_]+) like Mac OS X/);
+            lib.env.browser = {
+                name: 'iOS Webview',
+                isWebview: true,
+                version: RegExp.$1.split('_').join('.')
             }
         }
-        else {
-            window.navigator.userAgent.match(/OS ([\d_]+) like Mac OS X/);
-            lib.env.browser = {
-                name:"iOS Webview",
-                version:RegExp.$1.split("_").join(".")
-            }
-        }
-    }
-    else {
+    } else {
         lib.env.browser = {
-            name:"unknown",
-            version:"0.0"
+            name:'unknown',
+            version:'0.0'
         }
     }
     
-    if(lib.version ) {
+    if(lib.version) {
         var Version = lib.version();
         lib.env.browser.version = new Version(lib.env.browser.version);
     }
