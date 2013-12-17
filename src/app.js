@@ -16,8 +16,7 @@
         }
 
         if(lib.version) {
-            var Version = lib.version();
-            lib.env.taobaoApp.version = new Version(lib.env.taobaoApp.version);
+            lib.env.taobaoApp.version = lib.version(lib.env.taobaoApp.version);
         }
     }
 

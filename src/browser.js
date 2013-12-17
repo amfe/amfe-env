@@ -48,13 +48,12 @@
     } else {
         lib.env.browser = {
             name:'unknown',
-            version:'0.0'
+            version:'0.0.0'
         }
     }
     
     if(lib.version) {
-        var Version = lib.version();
-        lib.env.browser.version = new Version(lib.env.browser.version);
+        lib.env.browser.version = lib.version(lib.env.browser.version);
     }
     
 })(window, window['lib'] || (window['lib'] = {}));

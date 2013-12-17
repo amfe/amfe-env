@@ -1,0 +1,1 @@
+!function(a,b){b.env=b.env||{};var c=a.location.search.replace(/^\?/,"");if(b.env.params={},c)for(var d=srch.split("&"),e=0;e<d.length;e++)d[e]=d[e].split("="),b.env.params[d[e][0]]=decodeURIComponent(d[e][1])}(window,window.lib||(window.lib={}));

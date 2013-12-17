@@ -1,19 +1,17 @@
+;
 (function(window, lib) {
     lib.env = lib.env || {};
-    
-    lib.version = function(){
-        return Version;
-    };
-    
     
     function Version(string){
         this.string = string;
     };
+
     Version.prototype.toString = function(){
         return this.string;
     };
+
     Version.prototype.valueOf = function(){
-        var v = this.toString().split(".");
+        var v = this.toString().split('.');
         var r = [];
         for(var i = 0; i < v.length; i++) {
             var n = parseInt(v[i],10);
@@ -23,31 +21,33 @@
             var s = n.toString();
             if(s.length < 5)
             {
-                s = Array(6-s.length).join("0") + s;
+                s = Array(6-s.length).join('0') + s;
             }
             r.push(s);
             if(r.length === 1)
             {
-                r.push(".");
+                r.push('.');
             }
         }
-        return window.parseFloat(r.join(""));
+        return window.parseFloat(r.join(''));
         
     };
     
     Version.prototype.higherThan = function(v) {
         return Version.compare(this,v) > 0;
     };
+
     Version.prototype.lowerThan = function(v) {
         return Version.compare(this,v) < 0;
     };
+
     Version.prototype.is = function(v) {
         return Version.compare(this,v) === 0;
     };
+
     Version.compare = function (v1,v2){
-        
-        v1 = v1.toString().split(".");
-        v2 = v2.toString().split(".");
+        v1 = v1.toString().split('.');
+        v2 = v2.toString().split('.');
         
         for(var i = 0; i < v1.length || i < v2.length; i++) {
             var n1 = parseInt(v1[i],10),  n2 = parseInt(v2[i],10);
@@ -66,15 +66,12 @@
             }
         }
         return 0;
-        
-    }
-    
-    for(var p in lib.env) {
-        if(lib.env[p] && lib.env[p].version) {
-            lib.env[p].version = new Version(lib.env[p].version);
-        }
     }
 
+    
+    lib.version = function(string){
+        return new Version(string);
+    };
     
 })(window, window['lib'] || (window['lib'] = {}));
 ;
@@ -110,8 +107,7 @@
         }
 
         if(lib.version) {
-            var Version = lib.version();
-            lib.env.taobaoApp.version = new Version(lib.env.taobaoApp.version);
+            lib.env.taobaoApp.version = lib.version(lib.env.taobaoApp.version);
         }
     }
 
@@ -166,13 +162,12 @@
     } else {
         lib.env.browser = {
             name:'unknown',
-            version:'0.0'
+            version:'0.0.0'
         }
     }
     
     if(lib.version) {
-        var Version = lib.version();
-        lib.env.browser.version = new Version(lib.env.browser.version);
+        lib.env.browser.version = lib.version(lib.env.browser.version);
     }
     
 })(window, window['lib'] || (window['lib'] = {}));
@@ -203,13 +198,12 @@
     } else {
         lib.env.os = {
             name:'unknown',
-            version:'0.0'
+            version:'0.0.0'
         }
     }
     
     if(lib.version) {
-        var Version = lib.version();
-        lib.env.os.version = new Version(lib.env.os.version);
+        lib.env.os.version = lib.version(lib.env.os.version);
     }
     
 })(window, window['lib'] || (window['lib'] = {}));

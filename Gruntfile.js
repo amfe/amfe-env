@@ -18,6 +18,15 @@ module.exports = function(grunt) {
                     src: ['package.json'],
                     dest: '<%= distPath %>'
                 }]
+            },
+            src: {
+                files: [{
+                    expand: true,
+                    cwd: './src',
+                    src: ['version.js', 'params.js'],
+                    dest: '<%= distPath %>',
+                    ext: '.debug.js'
+                }]
             }
         },
 
@@ -48,13 +57,13 @@ module.exports = function(grunt) {
         watch: {
             combo: {
                 files: ['package.json'],
-                tasks: ['copy', 'depcombo']
+                tasks: ['copy:main', 'depcombo']
             },
 
 
             js: {
                 files: ['<%= srcPath %>/*.js', '<%= srcPath %>/**/*.js'],
-                tasks: ['depconcat', 'uglify', 'depcombo']
+                tasks: ['copy:src', 'depconcat', 'uglify', 'depcombo']
             }
         },
 
@@ -85,7 +94,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-    grunt.registerTask('dist', ['copy', 'depconcat', 'uglify', 'depcombo']);
+    grunt.registerTask('dist', ['clean','copy', 'depconcat', 'uglify', 'depcombo']);
     grunt.registerTask('dev', ['watch']);
 
     grunt.registerTask('default', ['dist']);
