@@ -19,13 +19,11 @@
                 n = 0;
             }
             var s = n.toString();
-            if(s.length < 5)
-            {
+            if(s.length < 5) {
                 s = Array(6-s.length).join('0') + s;
             }
             r.push(s);
-            if(r.length === 1)
-            {
+            if(r.length === 1) {
                 r.push('.');
             }
         }
