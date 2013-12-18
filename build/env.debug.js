@@ -193,7 +193,7 @@
 (function(window, lib) {
     lib.env = lib.env || {};
     
-    var ttid = lib.env.param['ttid'];
+    var ttid = lib.env.params['ttid'];
     var ua = window.navigator.userAgent;
 
     var windvine;
