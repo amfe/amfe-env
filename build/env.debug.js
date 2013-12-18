@@ -204,7 +204,7 @@
     var platform;
     var version;
     if (ua.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
-        platform = RegExp.$1;
+        platform = RegExp.$1.replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = RegExp.$2;
     } else if (windvine) {
         windvine = lib.version(windvine);
@@ -228,7 +228,7 @@
     }
 
     if (!version && ttid && ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
-        platform = RegExp.$1;
+        platform = RegExp.$1.replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = RegExp.$2;
     }
 
