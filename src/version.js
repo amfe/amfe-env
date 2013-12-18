@@ -3,7 +3,7 @@
     lib.env = lib.env || {};
     
     function Version(string){
-        this.string = string;
+        this.string = string.toString();
     };
 
     Version.prototype.toString = function(){
@@ -28,18 +28,25 @@
             }
         }
         return window.parseFloat(r.join(''));
-        
     };
     
-    Version.prototype.higherThan = function(v) {
+    Version.prototype.gt = function(v) {
         return Version.compare(this,v) > 0;
     };
 
-    Version.prototype.lowerThan = function(v) {
+    Version.prototype.gte = function(v) {
+        return Version.compare(this,v) >= 0;
+    };
+
+    Version.prototype.lt = function(v) {
         return Version.compare(this,v) < 0;
     };
 
-    Version.prototype.is = function(v) {
+    Version.prototype.lte = function(v) {
+        return Version.compare(this,v) <= 0;
+    };
+
+    Version.prototype.eq = function(v) {
         return Version.compare(this,v) === 0;
     };
 
