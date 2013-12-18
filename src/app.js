@@ -1,5 +1,6 @@
 //@require version
 //@require params
+//@require os
 
 ;
 (function(window, lib) {
