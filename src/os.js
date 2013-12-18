@@ -29,7 +29,7 @@
         }
     }
     
-    if(lib.version) {
+    if (lib.version) {
         lib.env.os.version = lib.version(lib.env.os.version);
     }
     

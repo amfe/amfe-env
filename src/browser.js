@@ -42,7 +42,7 @@
             lib.env.browser = {
                 name: 'iOS Webview',
                 isWebview: true,
-                version: RegExp.$1.split('_').join('.')
+                version: RegExp.$1.replace('_', '')
             }
         }
     } else {
@@ -52,7 +52,7 @@
         }
     }
     
-    if(lib.version) {
+    if (lib.version) {
         lib.env.browser.version = lib.version(lib.env.browser.version);
     }
     
