@@ -2,7 +2,7 @@
 (function(window, lib) {
     lib.env = lib.env || {};
 
-    var ua = ua;
+    var ua = window.navigator.userAgent;
     
     if(ua.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/)) {
         lib.env.browser = {
