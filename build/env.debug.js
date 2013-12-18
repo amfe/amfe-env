@@ -86,7 +86,7 @@
     var search = window.location.search.replace(/^\?/,'')
     lib.env.params = {};
     if(search) {
-        var params = srch.split('&');
+        var params = search.split('&');
         for(var i = 0 ; i < params.length; i++) {
             params[i] = params[i].split('=');
             lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
