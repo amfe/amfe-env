@@ -16,8 +16,7 @@
 
     var platform;
     var version;
-    if (ua.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/) ||
-            (ttid && ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/))) {
+    if (ua.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
         platform = RegExp.$1;
         version = RegExp.$2;
     } else if (windvine) {
@@ -39,6 +38,11 @@
                 version = '3.4.5';
             }
         }
+    }
+
+    if (!version && ttid && ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
+        platform = RegExp.$1;
+        version = RegExp.$2;
     }
 
     if (windvine || (platform && version)) {
