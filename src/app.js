@@ -10,15 +10,16 @@
     var ua = window.navigator.userAgent;
 
     var windvine;
-    if (ua.match(/WindVane[\/\s]([\d\.\_]+)/)) {
-        windvine = RegExp.$1;
+    var matched;
+    if ((matched = ua.match(/WindVane[\/\s]([\d\.\_]+)/))) {
+        windvine = matched[1];
     }
 
     var platform;
     var version;
-    if (ua.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
-        platform = RegExp.$1.replace(/^ip/, 'iP').replace(/^a/, 'A');
-        version = RegExp.$2;
+    if ((matched = ua.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/))) {
+        platform = matched[1].replace(/^ip/, 'iP').replace(/^a/, 'A');
+        version = matched[2];
     } else if (windvine) {
         windvine = lib.version(windvine);
         platform = lib.os.name;
@@ -40,9 +41,11 @@
         }
     }
 
-    if (!version && ttid && ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/)) {
-        platform = RegExp.$1.replace(/^ip/, 'iP').replace(/^a/, 'A');
-        version = RegExp.$2;
+    if (!version && ttid) {
+        if ((matched = ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/))) {
+            platform = matched[1].replace(/^ip/, 'iP').replace(/^a/, 'A');
+            version = matched[2];
+        }
     }
 
     if (windvine || (platform && version)) {
