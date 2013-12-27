@@ -2,7 +2,7 @@
 
 ## 最新版本
 
-**1.1.2**
+**1.1.3**
 
 ## 安装依赖
 
@@ -14,8 +14,8 @@
 
 ## 如何使用
 
-*    lib.env.params - url中search参数的对象，例如有ttid参数可以通过lib.env.params['ttid']来获取
-* lib.env.version(strVersion) - 返回一个版本号的对象
+* lib.env.params - url中search参数的对象，例如有ttid参数可以通过lib.env.params['ttid']来获取
+* lib.version(strVersion) - 返回一个版本号的对象
 	* instance.gt(strVersion) - 大于指定版本号
 	* instance.gte(strVersion) - 大于等于指定版本号
 	* instance.lt(strVersion) - 小于指定版本号
