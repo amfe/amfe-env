@@ -43,7 +43,7 @@
             lib.env.browser = {
                 name: 'iOS Webview',
                 isWebview: true,
-                version: matched[1].replace('_', '')
+                version: matched[1].replace(/\_/, '.')
             }
         }
     } else {
