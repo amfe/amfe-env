@@ -24,7 +24,7 @@
             isChrome: true,
             version: matched[1]
         }
-    } else if(ua.match(/Mobile Safari/) && (matched = ua.match(/Android ([\d\.]+)/))) {
+    } else if(ua.match(/Mobile Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.browser = {
             name: 'Android',
             isAndroid: true,

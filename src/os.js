@@ -5,7 +5,7 @@
     var ua = window.navigator.userAgent;
     var matched;
     
-    if((matched = ua.match(/Android ([\d\.]+)/))) {
+    if((matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.os = {
             name: 'Android',
             isAndroid: true,
