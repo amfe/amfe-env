@@ -89,7 +89,11 @@
         var params = search.split('&');
         for(var i = 0 ; i < params.length; i++) {
             params[i] = params[i].split('=');
-            lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
+            try{
+                lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
+            } catch(e) {
+                lib.env.params[params[i][0]] = params[i][1];
+            }
         }
     }
 
