@@ -114,7 +114,7 @@
     } else if((matched = ua.match(/(iPhone|iPad|iPod)/))) {
         var name = matched[1];
 
-        matched = ua.match(/OS ([\d_]+) like Mac OS X/);
+        matched = ua.match(/OS ([\d_\.]+) like Mac OS X/);
 
         lib.env.os = {
             name: name,
@@ -176,7 +176,7 @@
                 version: matched[1]
             }
         } else {
-            matched = ua.match(/OS ([\d_]+) like Mac OS X/);
+            matched = ua.match(/OS ([\d_\.]+) like Mac OS X/);
             lib.env.browser = {
                 name: 'iOS Webview',
                 isWebview: true,
