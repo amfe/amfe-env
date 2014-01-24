@@ -155,7 +155,7 @@
             version: matched[1]
         }
     } else if((!ua.match(/Version\//) || !ua.match(/Android/)) 
-        && (matched = ua.match(/Chrome\/([\d\.]+)/))) {
+        && (matched = ua.match(/(?:Chrome|CriOS)\/([\d\.]+)/))) {
         lib.env.browser = {
             name: 'Chrome',
             isChrome: true,
