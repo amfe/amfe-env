@@ -210,10 +210,10 @@
 
     var platform;
     var version;
-    if ((matched = ua.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/))) {
+    if ((matched = ua.match(/@taobao_(iphone|android|ipad|apad)_([\d\.]+)/))) {
         platform = matched[1].replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = matched[2];
-    } else if (ttid && (matched = ttid.match(/@taobao_(iphone|android|ipad)_([\d\.]+)/))) {
+    } else if (ttid && (matched = ttid.match(/@taobao_(iphone|android|ipad|apad)_([\d\.]+)/))) {
         platform = matched[1].replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = matched[2];
     } else if (windvine) {
