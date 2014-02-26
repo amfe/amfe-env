@@ -17,8 +17,7 @@
             isQQ: true,
             version: matched[1]
         }
-    } else if((!ua.match(/Version\//) || !ua.match(/Android/)) 
-        && (matched = ua.match(/(?:Chrome|CriOS)\/([\d\.]+)/))) {
+    } else if((matched = ua.match(/(?:Chrome|CriOS)\/([\d\.]+)/))) {
         lib.env.browser = {
             name: 'Chrome',
             isChrome: true,
