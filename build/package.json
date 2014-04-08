@@ -1,11 +1,11 @@
 {
   "name": "lib.env",
   "description": "a environment checking library",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-env",
   "author": {
-    "name": "hanquan.csf",
-    "email": "hanquan.csf@taobao.com"
+    "name": "zhuxun.jb",
+    "email": "zhuxun.jb@taobao.com"
   },
   "repository": {
     "type": "git",

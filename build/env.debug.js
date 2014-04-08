@@ -207,17 +207,35 @@
         windvine = matched[1];
     }
 
+    var appname;
     var platform;
     var version;
-    if ((matched = ua.match(/@taobao_(iphone|android|ipad|apad)_([\d\.]+)/))) {
-        platform = matched[1].replace(/^ip/, 'iP').replace(/^a/, 'A');
+    if ((matched = ua.match(/AliApp\(([A-Z\-]+)\/([\d\.]+)\)/))) {
+        appname = matched[1];
+        if (appname.indexOf('-PD') > 0) {
+            if (lib.env.os.isIOS) {
+                platform = 'iPad';
+            } else if (lib.env.os.isAndroid) {
+                platform = 'aPad';
+            } else {
+                platform = lib.env.os.name;
+            }
+        } else {
+            platform = lib.env.os.name;
+        }
         version = matched[2];
-    } else if (ttid && (matched = ttid.match(/@taobao_(iphone|android|ipad|apad)_([\d\.]+)/))) {
-        platform = matched[1].replace(/^ip/, 'iP').replace(/^a/, 'A');
-        version = matched[2];
+    } else if ((matched = ua.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
+        appname = matched[1];
+        platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
+        version = matched[3];
+    } else if (ttid && (matched = ttid.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
+        appname = matched[1];
+        platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
+        version = matched[3];
     } else if (windvine) {
         windvine = lib.version(windvine);
         platform = lib.env.os.name;
+        appname = 'taobao';
 
         if (lib.env.os.isAndroid) {
             if (windvine.gte('2.5.1') && windvine.lte('2.5.5')) {
@@ -236,9 +254,10 @@
         }
     }
 
-    if (platform && version) {
+    if (appname && platform && version) {
         lib.env.taobaoApp = {
             windvine: lib.version(windvine || '0.0.0'),
+            appname: appname,
             version: lib.version(version || '0.0.0'),
             platform: platform
         }
