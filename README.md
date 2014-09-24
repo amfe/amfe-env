@@ -2,7 +2,7 @@
 
 ## 最新版本
 
-**1.1.12**
+**1.1.13**
 
 ## 安装依赖
 
@@ -38,8 +38,8 @@
 	* browser.isAndroid - 是否是Android的原生浏览器
 	* browser.isSafari - 是否是Safari浏览器
 	* browser.isWebview - 是否是iOS下的Webview
-* lib.env.taobaoApp - 客户端的对象，如果没有，表示不在客户端里
-	* taobaoApp.windvane - windvane的版本
-	* taobaoApp.appname - App的名称，比如taobao,TB等
-	* taobaoApp.version - 客户端的版本
-	* taobaoApp.platform - iPhone/iPad/Android
+* lib.env.aliapp - 客户端的对象，如果没有，表示不在客户端里
+	* aliapp.windvane - windvane的版本
+	* aliapp.appname - App的名称，比如TB,TM等
+	* aliapp.version - 客户端的版本
+	* aliapp.platform - iPhone/iPad/Android

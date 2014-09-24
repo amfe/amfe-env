@@ -15,11 +15,14 @@
         windvane = matched[1];
     }
 
-    var appname;
-    var platform;
-    var version;
+    var aliapp = false;
+    var appname = '';
+    var platform = '';
+    var version = '';
     if ((matched = ua.match(/AliApp\(([A-Z\-]+)\/([\d\.]+)\)/))) {
+        aliapp = true;
         appname = matched[1];
+        version = matched[2];
         if (appname.indexOf('-PD') > 0) {
             if (lib.env.os.isIOS) {
                 platform = 'iPad';
@@ -31,44 +34,59 @@
         } else {
             platform = lib.env.os.name;
         }
-        version = matched[2];
     } else if ((matched = ua.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
+        aliapp = true;
         appname = matched[1];
         platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = matched[3];
     } else if (ttid && (matched = ttid.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
+        aliapp = true;
         appname = matched[1];
         platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = matched[3];
     } else if (windvane) {
-        windvane = lib.version(windvane);
+        aliapp = true;
         platform = lib.env.os.name;
-        appname = 'taobao';
 
+        var wvver = lib.version(windvane);
         if (lib.env.os.isAndroid) {
-            if (windvane.gte('2.5.1') && windvane.lte('2.5.5')) {
+            if (wvver.gte('2.5.1') && wvver.lte('2.5.5')) {
+                appname = 'taobao';
                 version = '3.9.2';
-            } else if (windvane.eq('2.5.6')) {
+            } else if (wvver.eq('2.5.6')) {
+                appname = 'taobao';
                 version = '3.9.3';
-            } else if (windvane.eq('2.6.0')) {
+            } else if (wvver.eq('2.6.0')) {
+                appname = 'taobao';
                 version = '3.9.5';
             }
         } else if (lib.env.os.isIOS) {
-            if (windvane.gte('2.5.0') && windvane.lt('2.6.0')) {
+            if (wvver.gte('2.5.0') && wvver.lt('2.6.0')) {
+                appname = 'taobao';
                 version = '3.4.0';
-            } else if (windvane.eq('2.6.0')) {
+            } else if (wvver.eq('2.6.0')) {
+                appname = 'taobao';
                 version = '3.4.5';
             }
         }
     }
 
-    if (appname && platform && version) {
-        lib.env.taobaoApp = {
-            windvane: lib.version(windvane || '0.0.0'),
-            appname: appname,
-            version: lib.version(version || '0.0.0'),
-            platform: platform
-        }
+    if (!appname && ua.indexOf('TBIOS') > 0) {
+        appname = 'TB';
     }
+
+    if (aliapp) {
+        lib.env.aliapp = {
+            windvane: lib.version(windvane || '0.0.0'),
+            appname: (appname === 'taobao'?'TB':appname) || 'unkown',
+            version: lib.version(version || '0.0.0'),
+            platform: platform || lib.env.os.name
+        }
+    } else {
+        lib.env.aliapp = false;
+    }
+
+    // 向下兼容老版本
+    lib.env.taobaoApp = lib.env.aliapp;
 
 })(window, window['lib'] || (window['lib'] = {}));

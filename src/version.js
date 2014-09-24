@@ -1,53 +1,56 @@
-;
-(function(window, lib) {
+;(function(win, lib) {
     lib.env = lib.env || {};
     
     function Version(string){
-        this.string = string.toString();
+
+        Object.defineProperty(this, 'val', {
+            value: string.toString(),
+            enumerable: true
+        });
+        
+        this.gt = function(v) {
+            return Version.compare(this, v) > 0;
+        };
+
+        this.gte = function(v) {
+            return Version.compare(this, v) >= 0;
+        };
+
+        this.lt = function(v) {
+            return Version.compare(this, v) < 0;
+        };
+
+        this.lte = function(v) {
+            return Version.compare(this, v) <= 0;
+        };
+
+        this.eq = function(v) {
+            return Version.compare(this, v) === 0;
+        };
     };
 
-    Version.prototype.toString = function(){
-        return this.string;
-    };
+    Version.prototype.toString = function() {
+        return this.val;
+    }
 
     Version.prototype.valueOf = function(){
-        var v = this.toString().split('.');
+        var v = this.val.split('.');
         var r = [];
         for(var i = 0; i < v.length; i++) {
             var n = parseInt(v[i],10);
-            if(window.isNaN(n)) {
+            if (isNaN(n)) {
                 n = 0;
             }
             var s = n.toString();
-            if(s.length < 5) {
-                s = Array(6-s.length).join('0') + s;
+            if (s.length < 5) {
+                s = Array(6 - s.length).join('0') + s;
             }
             r.push(s);
             if(r.length === 1) {
                 r.push('.');
             }
         }
-        return window.parseFloat(r.join(''));
-    };
-    
-    Version.prototype.gt = function(v) {
-        return Version.compare(this,v) > 0;
-    };
-
-    Version.prototype.gte = function(v) {
-        return Version.compare(this,v) >= 0;
-    };
-
-    Version.prototype.lt = function(v) {
-        return Version.compare(this,v) < 0;
-    };
-
-    Version.prototype.lte = function(v) {
-        return Version.compare(this,v) <= 0;
-    };
-
-    Version.prototype.eq = function(v) {
-        return Version.compare(this,v) === 0;
+        return parseFloat(r.join(''));
     };
 
     Version.compare = function (v1,v2){
@@ -74,8 +77,7 @@
     }
 
     
-    lib.version = function(string){
-        return new Version(string);
+    lib.version = function(s) {
+        return new Version(s);
     };
-    
 })(window, window['lib'] || (window['lib'] = {}));
