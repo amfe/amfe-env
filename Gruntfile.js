@@ -18,15 +18,6 @@ module.exports = function(grunt) {
                     src: ['package.json'],
                     dest: '<%= distPath %>'
                 }]
-            },
-            src: {
-                files: [{
-                    expand: true,
-                    cwd: './src',
-                    src: ['version.js', 'params.js'],
-                    dest: '<%= distPath %>',
-                    ext: '.debug.js'
-                }]
             }
         },
 
@@ -83,18 +74,31 @@ module.exports = function(grunt) {
                 },
                 dest: '<%= distPath%>/combo.js'
             }
+        },
+
+        cmdwrap: {
+            js: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= distPath %>',
+                    src: ['env.js'],
+                    dest: '<%= distPath %>',
+                    ext: '.cmd.js'
+                }]
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-depconcat');
     grunt.loadNpmTasks('grunt-depcombo');
+    grunt.loadNpmTasks('grunt-cmdwrap');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-    grunt.registerTask('dist', ['clean','copy', 'depconcat', 'uglify', 'depcombo']);
+    grunt.registerTask('dist', ['clean','copy', 'depconcat', 'uglify', 'depcombo', 'cmdwrap']);
     grunt.registerTask('dev', ['watch']);
 
     grunt.registerTask('default', ['dist']);

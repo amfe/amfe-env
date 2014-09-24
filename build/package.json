@@ -1,12 +1,11 @@
 {
   "name": "lib.env",
   "description": "a environment checking library",
-  "version": "1.1.13",
+  "version": "1.2.0",
   "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-env",
-  "author": {
-    "name": "zhuxun.jb",
-    "email": "zhuxun.jb@taobao.com"
-  },
+  "author": [
+    "渚薰"
+  ],
   "repository": {
     "type": "git",
     "url": "git@gitlab.alibaba-inc.com:mtb/lib-env.git"
@@ -22,12 +21,13 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-depconcat": "~0.2.0",
-    "grunt-depcombo": "~0.1.0",
+    "grunt-cmdwrap": "^0.1.2",
+    "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.4.0",
-    "grunt-contrib-clean": "~0.5.0"
+    "grunt-depcombo": "^0.2.3",
+    "grunt-depconcat": "^0.2.1"
   },
   "dependencies": {},
   "combo": {},
