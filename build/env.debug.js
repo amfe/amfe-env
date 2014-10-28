@@ -162,6 +162,10 @@
             isChrome: true,
             version: matched[1]
         }
+
+        if (ua.match(/Version\/[\d+\.]+\s*Chrome/)) {
+            lib.env.browser.isWebview = true;
+        }
     } else if(ua.match(/Mobile Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.browser = {
             name: 'Android',
