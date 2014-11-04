@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 
             js: {
                 files: ['<%= srcPath %>/*.js', '<%= srcPath %>/**/*.js'],
-                tasks: ['copy:src', 'depconcat', 'uglify', 'depcombo']
+                tasks: ['copy', 'depconcat', 'uglify', 'depcombo']
             }
         },
 

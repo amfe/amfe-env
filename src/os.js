@@ -5,7 +5,13 @@
     var ua = window.navigator.userAgent;
     var matched;
     
-    if((matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
+    if ((matched = ua.match(/Windows\sPhone\s(?:OS\s)?([\d\.]+)/))) {
+        lib.env.os = {
+            name: 'Windows Phone',
+            isWindowsPhone: true,
+            version: matched[1]
+        }
+    } else if((matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.os = {
             name: 'Android',
             isAndroid: true,

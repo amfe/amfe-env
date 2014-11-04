@@ -17,6 +17,22 @@
             isQQ: true,
             version: matched[1]
         }
+    } else if ((matched = ua.match(/MSIE\s([\d\.]+)/)) || 
+                    (matched = ua.match(/IEMobile\/([\d\.]+)/))) {
+
+        lib.env.browser = {
+            name: 'IE',
+            isIE: true,
+            version: matched[1]
+        }
+
+        if (ua.match(/IEMobile/)) {
+            lib.env.browser.isIEMobile = true;
+        }
+
+        if (ua.match(/Android|iPhone/)) {
+            lib.env.browser.isIELikeWebkit = true;
+        }
     } else if((matched = ua.match(/(?:Chrome|CriOS)\/([\d\.]+)/))) {
         lib.env.browser = {
             name: 'Chrome',
