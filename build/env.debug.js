@@ -115,9 +115,15 @@
         }
     } else if((matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.os = {
-            name: 'Android',
-            isAndroid: true,
             version: matched[1]
+        }
+
+        if ((!!ua.match(/Mobile\s+Safari/))) {
+            lib.env.os.name = 'Android';
+            lib.env.os.isAndroid = true;
+        } else {
+            lib.env.os.name = 'AndroidPad';
+            lib.env.os.isAndroidPad = true;
         }
     } else if((matched = ua.match(/(iPhone|iPad|iPod)/))) {
         var name = matched[1];
@@ -162,17 +168,25 @@
             isQQ: true,
             version: matched[1]
         }
+    } else if ((matched = ua.match(/Firefox\/([\d\.]+)/))) {
+        lib.env.browser = {
+            name: 'Firefox',
+            isFirefox: true,
+            version: matched[1]
+        }
     } else if ((matched = ua.match(/MSIE\s([\d\.]+)/)) || 
                     (matched = ua.match(/IEMobile\/([\d\.]+)/))) {
 
         lib.env.browser = {
-            name: 'IE',
-            isIE: true,
             version: matched[1]
         }
 
         if (ua.match(/IEMobile/)) {
+            lib.env.browser.name = 'IEMobile';
             lib.env.browser.isIEMobile = true;
+        } else {
+            lib.env.browser.name = 'IE';
+            lib.env.browser.isIE = true;
         }
 
         if (ua.match(/Android|iPhone/)) {
@@ -186,6 +200,7 @@
         }
 
         if (ua.match(/Version\/[\d+\.]+\s*Chrome/)) {
+            lib.env.browser.name = 'Chrome Webview';
             lib.env.browser.isWebview = true;
         }
     } else if(ua.match(/Mobile Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
@@ -222,11 +237,10 @@
     }
     
 })(window, window['lib'] || (window['lib'] = {}));
-;
-(function(window, lib) {
+;(function(window, lib) {
     lib.env = lib.env || {};
     
-    var ttid = lib.env.params['ttid'];
+    //var ttid = lib.env.params['ttid'];
     var ua = window.navigator.userAgent;
 
     var windvane;
@@ -247,24 +261,26 @@
             if (lib.env.os.isIOS) {
                 platform = 'iPad';
             } else if (lib.env.os.isAndroid) {
-                platform = 'aPad';
+                platform = 'AndroidPad';
             } else {
                 platform = lib.env.os.name;
             }
         } else {
             platform = lib.env.os.name;
         }
-    } else if ((matched = ua.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
+    }
+    // 去除针对较老客户端的兼容性逻辑
+    /* else if ((matched = ua.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
         aliapp = true;
         appname = matched[1];
         platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = matched[3];
-    } else if (ttid && (matched = ttid.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
+    }else if (ttid && (matched = ttid.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
         aliapp = true;
         appname = matched[1];
         platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
         version = matched[3];
-    } else if (windvane) {
+    }else if (windvane) {
         aliapp = true;
         platform = lib.env.os.name;
 
@@ -289,8 +305,9 @@
                 version = '3.4.5';
             }
         }
-    }
+    } */
 
+    // 兼容手淘的一个bug，在webview初始化异常时，在ua中只包含TBIOS字样，也认为是手淘webview。
     if (!appname && ua.indexOf('TBIOS') > 0) {
         appname = 'TB';
     }

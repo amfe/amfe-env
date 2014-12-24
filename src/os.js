@@ -13,9 +13,15 @@
         }
     } else if((matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.os = {
-            name: 'Android',
-            isAndroid: true,
             version: matched[1]
+        }
+
+        if ((!!ua.match(/Mobile\s+Safari/))) {
+            lib.env.os.name = 'Android';
+            lib.env.os.isAndroid = true;
+        } else {
+            lib.env.os.name = 'AndroidPad';
+            lib.env.os.isAndroidPad = true;
         }
     } else if((matched = ua.match(/(iPhone|iPad|iPod)/))) {
         var name = matched[1];

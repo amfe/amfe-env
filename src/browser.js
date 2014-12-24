@@ -17,17 +17,25 @@
             isQQ: true,
             version: matched[1]
         }
+    } else if ((matched = ua.match(/Firefox\/([\d\.]+)/))) {
+        lib.env.browser = {
+            name: 'Firefox',
+            isFirefox: true,
+            version: matched[1]
+        }
     } else if ((matched = ua.match(/MSIE\s([\d\.]+)/)) || 
                     (matched = ua.match(/IEMobile\/([\d\.]+)/))) {
 
         lib.env.browser = {
-            name: 'IE',
-            isIE: true,
             version: matched[1]
         }
 
         if (ua.match(/IEMobile/)) {
+            lib.env.browser.name = 'IEMobile';
             lib.env.browser.isIEMobile = true;
+        } else {
+            lib.env.browser.name = 'IE';
+            lib.env.browser.isIE = true;
         }
 
         if (ua.match(/Android|iPhone/)) {
@@ -41,6 +49,7 @@
         }
 
         if (ua.match(/Version\/[\d+\.]+\s*Chrome/)) {
+            lib.env.browser.name = 'Chrome Webview';
             lib.env.browser.isWebview = true;
         }
     } else if(ua.match(/Mobile Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {

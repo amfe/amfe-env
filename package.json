@@ -1,7 +1,7 @@
 {
   "name": "lib.env",
   "description": "a environment checking library",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-env",
   "author": [
     "渚薰"
