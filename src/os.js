@@ -11,7 +11,7 @@
             isWindowsPhone: true,
             version: matched[1]
         }
-    } else if((matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
+    } else if(!!ua.match(/Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.os = {
             version: matched[1]
         }

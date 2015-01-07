@@ -113,7 +113,7 @@
             isWindowsPhone: true,
             version: matched[1]
         }
-    } else if((matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
+    } else if(!!ua.match(/Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.os = {
             version: matched[1]
         }
@@ -203,7 +203,7 @@
             lib.env.browser.name = 'Chrome Webview';
             lib.env.browser.isWebview = true;
         }
-    } else if(ua.match(/Mobile Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
+    } else if(!!ua.match(/Safari/) && (matched = ua.match(/Android[\s\/]([\d\.]+)/))) {
         lib.env.browser = {
             name: 'Android',
             isAndroid: true,
