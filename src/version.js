@@ -155,6 +155,6 @@
      * @memberof lib
      */
     lib.version = function(v) {
-        return new Version(s);
+        return new Version(v);
     };
 })(window, window['lib'] || (window['lib'] = {}));

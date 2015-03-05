@@ -21,6 +21,6 @@
 
 ![appname](http://gtms03.alicdn.com/tps/i3/TB19Ih2HpXXXXcgXXXXHjbX.XXX-556-724.png)
 
-## [APIs](../../raw/master/api/index.html)
+## [APIs](/mtb/lib-env/raw/master/api/index.html)
 
-## [changelog](../../blob/master/CHANGELOG.md)
+## [changelog](/mtb/lib-env/blob/master/CHANGELOG.md)
