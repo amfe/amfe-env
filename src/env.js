@@ -4,3 +4,6 @@
 //@require browser
 //@require app
 
+/**
+ * @namespace lib.env
+ */

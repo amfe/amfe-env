@@ -5,7 +5,6 @@
 ;(function(window, lib) {
     lib.env = lib.env || {};
     
-    //var ttid = lib.env.params['ttid'];
     var ua = window.navigator.userAgent;
 
     var windvane;
@@ -34,43 +33,6 @@
             platform = lib.env.os.name;
         }
     }
-    // 去除针对较老客户端的兼容性逻辑
-    /* else if ((matched = ua.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
-        aliapp = true;
-        appname = matched[1];
-        platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
-        version = matched[3];
-    }else if (ttid && (matched = ttid.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
-        aliapp = true;
-        appname = matched[1];
-        platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
-        version = matched[3];
-    }else if (windvane) {
-        aliapp = true;
-        platform = lib.env.os.name;
-
-        var wvver = lib.version(windvane);
-        if (lib.env.os.isAndroid) {
-            if (wvver.gte('2.5.1') && wvver.lte('2.5.5')) {
-                appname = 'taobao';
-                version = '3.9.2';
-            } else if (wvver.eq('2.5.6')) {
-                appname = 'taobao';
-                version = '3.9.3';
-            } else if (wvver.eq('2.6.0')) {
-                appname = 'taobao';
-                version = '3.9.5';
-            }
-        } else if (lib.env.os.isIOS) {
-            if (wvver.gte('2.5.0') && wvver.lt('2.6.0')) {
-                appname = 'taobao';
-                version = '3.4.0';
-            } else if (wvver.eq('2.6.0')) {
-                appname = 'taobao';
-                version = '3.4.5';
-            }
-        }
-    } */
 
     // 兼容手淘的一个bug，在webview初始化异常时，在ua中只包含TBIOS字样，也认为是手淘webview。
     if (!appname && ua.indexOf('TBIOS') > 0) {
@@ -78,9 +40,17 @@
     }
 
     if (aliapp) {
+        /**
+         * @instance aliapp
+         * @memberof lib.env
+         * @property {Version} windavne - windvane的版本
+         * @property {String} appanem - App的名称，比如TB/TM等
+         * @property {Version} version - 客户端的版本
+         * @property {String} platform - 平台名称，比如iPhone/iPad/Android/AndroidPad等
+         */
         lib.env.aliapp = {
             windvane: lib.version(windvane || '0.0.0'),
-            appname: (appname === 'taobao'?'TB':appname) || 'unkown',
+            appname: appname || 'unkown',
             version: lib.version(version || '0.0.0'),
             platform: platform || lib.env.os.name
         }

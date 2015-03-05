@@ -1,8 +1,13 @@
 ;
 (function(window, lib) {
     lib.env = lib.env || {};
-    
     var search = window.location.search.replace(/^\?/,'')
+
+    /**
+     * 当前URL的查询串键值对
+     * @member {Object} params
+     * @memberof lib.env
+     */
     lib.env.params = {};
     if(search) {
         var params = search.split('&');

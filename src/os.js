@@ -6,6 +6,18 @@
     var matched;
     
     if ((matched = ua.match(/Windows\sPhone\s(?:OS\s)?([\d\.]+)/))) {
+        /**
+         * @instance os
+         * @memberof lib.env
+         * @property {String} name - 操作系统名称，比如Android/AndroidPad/iPhone/iPod/iPad/Windows Phone/unknown等
+         * @property {Version} version - 操作系统版本号
+         * @property {Boolean} isWindowsPhone - 是否是Windows Phone
+         * @property {Boolean} isIPhone - 是否是iPhone/iTouch
+         * @property {Boolean} isIPad - 是否是iPad
+         * @property {Boolean} isIOS - 是否是iOS
+         * @property {Boolean} isAndroid - 是否是Android手机
+         * @property {Boolean} isAndroidPad - 是否是Android平板
+         */
         lib.env.os = {
             name: 'Windows Phone',
             isWindowsPhone: true,

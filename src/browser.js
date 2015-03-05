@@ -4,8 +4,23 @@
 
     var ua = window.navigator.userAgent;
     var matched;
-    
+
     if((matched = ua.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/))) {
+        /**
+         * @instance browser
+         * @memberof lib.env
+         * @property {String} name - 浏览器名称，比如UC/QQ/Firefox/Chrome/Android/Safari/iOS Webview/Chrome Webview/IE/IEMobile/unknown等
+         * @property {Version} version - 浏览器版本号
+         * @property {Boolean} isUC - 是否是UC浏览器
+         * @property {Boolean} isQQ - 是否是QQ浏览器
+         * @property {Boolean} isIE - 是否是IE浏览器
+         * @property {Boolean} isIEMobile - 是否是IE移动版浏览器
+         * @property {Boolean} isIELikeWebkit - 是否是IE兼容了Webkit特性的浏览器
+         * @property {Boolean} isChrome - 是否是Chrome浏览器
+         * @property {Boolean} isAndroid - 是否是Android的原生浏览器
+         * @property {Boolean} isSafari - 是否是Safari浏览器
+         * @property {Boolean} isWebview - 是否是iOS下的Webview或Android下Chrome的Webview
+         */
         lib.env.browser = {
             name: 'UC',
             isUC: true,

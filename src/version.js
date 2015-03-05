@@ -1,38 +1,100 @@
 ;(function(win, lib) {
+    /**
+     * @namespace lib
+     */
     lib.env = lib.env || {};
     
-    function Version(string){
+    /**
+     * 操作版本号
+     * @class Version
+     * @param {String} v - 版本号字符串
+     */
+    function Version(v){
 
         Object.defineProperty(this, 'val', {
-            value: string.toString(),
+            value: v.toString(),
             enumerable: true
         });
-        
+
+        /**
+         * 判断是否大于某个版本
+         * @method gt
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否大于
+         * @instance
+         * @memberof Version
+         */
         this.gt = function(v) {
             return Version.compare(this, v) > 0;
         };
 
+        /**
+         * 判断是否大于等于某个版本
+         * @method gte
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否大于等于
+         * @instance
+         * @memberof Version
+         */
         this.gte = function(v) {
             return Version.compare(this, v) >= 0;
         };
 
+        /**
+         * 判断是否小于某个版本
+         * @method lt
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否小于
+         * @instance
+         * @memberof Version
+         */
         this.lt = function(v) {
             return Version.compare(this, v) < 0;
         };
 
+        /**
+         * 判断是否小于等于某个版本
+         * @method lte
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否小于等于
+         * @instance
+         * @memberof Version
+         */
         this.lte = function(v) {
             return Version.compare(this, v) <= 0;
         };
 
+        /**
+         * 判断是否等于某个版本
+         * @method eq
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否等于
+         * @instance
+         * @memberof Version
+         */
         this.eq = function(v) {
             return Version.compare(this, v) === 0;
         };
     };
 
+    /**
+     * 返回当前版本字符串
+     * @method toString
+     * @return {String} 当前版本字符串
+     * @instance
+     * @memberof Version
+     */
     Version.prototype.toString = function() {
         return this.val;
     }
 
+    /**
+     * 返回当前版本
+     * @method valueOf
+     * @return {Boolean} 当前版本
+     * @instance
+     * @memberof Version
+     */
     Version.prototype.valueOf = function(){
         var v = this.val.split('.');
         var r = [];
@@ -53,6 +115,14 @@
         return parseFloat(r.join(''));
     };
 
+    /**
+     * 返回当前版本字符串
+     * @method compare
+     * @param {String} v1 - 需要比较的版本1
+     * @param {String} v2 - 需要比较的版本2
+     * @return {Number} 0表示相等，-1表示小于，1表示大于
+     * @memberof Version
+     */
     Version.compare = function (v1,v2){
         v1 = v1.toString().split('.');
         v2 = v2.toString().split('.');
@@ -76,8 +146,15 @@
         return 0;
     }
 
-    
-    lib.version = function(s) {
+
+    /**
+     * 解析和操作版本号
+     * @method version
+     * @param {string} v - 需要解析的版本号
+     * @return {Version} Verson实例
+     * @memberof lib
+     */
+    lib.version = function(v) {
         return new Version(s);
     };
 })(window, window['lib'] || (window['lib'] = {}));

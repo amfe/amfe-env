@@ -1,38 +1,100 @@
 ;(function(win, lib) {
+    /**
+     * @namespace lib
+     */
     lib.env = lib.env || {};
     
-    function Version(string){
+    /**
+     * 操作版本号
+     * @class Version
+     * @param {String} v - 版本号字符串
+     */
+    function Version(v){
 
         Object.defineProperty(this, 'val', {
-            value: string.toString(),
+            value: v.toString(),
             enumerable: true
         });
-        
+
+        /**
+         * 判断是否大于某个版本
+         * @method gt
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否大于
+         * @instance
+         * @memberof Version
+         */
         this.gt = function(v) {
             return Version.compare(this, v) > 0;
         };
 
+        /**
+         * 判断是否大于等于某个版本
+         * @method gte
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否大于等于
+         * @instance
+         * @memberof Version
+         */
         this.gte = function(v) {
             return Version.compare(this, v) >= 0;
         };
 
+        /**
+         * 判断是否小于某个版本
+         * @method lt
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否小于
+         * @instance
+         * @memberof Version
+         */
         this.lt = function(v) {
             return Version.compare(this, v) < 0;
         };
 
+        /**
+         * 判断是否小于等于某个版本
+         * @method lte
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否小于等于
+         * @instance
+         * @memberof Version
+         */
         this.lte = function(v) {
             return Version.compare(this, v) <= 0;
         };
 
+        /**
+         * 判断是否等于某个版本
+         * @method eq
+         * @param {String} v - 需要比较的版本号
+         * @return {Boolean} 是否等于
+         * @instance
+         * @memberof Version
+         */
         this.eq = function(v) {
             return Version.compare(this, v) === 0;
         };
     };
 
+    /**
+     * 返回当前版本字符串
+     * @method toString
+     * @return {String} 当前版本字符串
+     * @instance
+     * @memberof Version
+     */
     Version.prototype.toString = function() {
         return this.val;
     }
 
+    /**
+     * 返回当前版本
+     * @method valueOf
+     * @return {Boolean} 当前版本
+     * @instance
+     * @memberof Version
+     */
     Version.prototype.valueOf = function(){
         var v = this.val.split('.');
         var r = [];
@@ -53,6 +115,14 @@
         return parseFloat(r.join(''));
     };
 
+    /**
+     * 返回当前版本字符串
+     * @method compare
+     * @param {String} v1 - 需要比较的版本1
+     * @param {String} v2 - 需要比较的版本2
+     * @return {Number} 0表示相等，-1表示小于，1表示大于
+     * @memberof Version
+     */
     Version.compare = function (v1,v2){
         v1 = v1.toString().split('.');
         v2 = v2.toString().split('.');
@@ -76,16 +146,28 @@
         return 0;
     }
 
-    
-    lib.version = function(s) {
+
+    /**
+     * 解析和操作版本号
+     * @method version
+     * @param {string} v - 需要解析的版本号
+     * @return {Version} Verson实例
+     * @memberof lib
+     */
+    lib.version = function(v) {
         return new Version(s);
     };
 })(window, window['lib'] || (window['lib'] = {}));
 ;
 (function(window, lib) {
     lib.env = lib.env || {};
-    
     var search = window.location.search.replace(/^\?/,'')
+
+    /**
+     * 当前URL的查询串键值对
+     * @member {Object} params
+     * @memberof lib.env
+     */
     lib.env.params = {};
     if(search) {
         var params = search.split('&');
@@ -108,6 +190,18 @@
     var matched;
     
     if ((matched = ua.match(/Windows\sPhone\s(?:OS\s)?([\d\.]+)/))) {
+        /**
+         * @instance os
+         * @memberof lib.env
+         * @property {String} name - 操作系统名称，比如Android/AndroidPad/iPhone/iPod/iPad/Windows Phone/unknown等
+         * @property {Version} version - 操作系统版本号
+         * @property {Boolean} isWindowsPhone - 是否是Windows Phone
+         * @property {Boolean} isIPhone - 是否是iPhone/iTouch
+         * @property {Boolean} isIPad - 是否是iPad
+         * @property {Boolean} isIOS - 是否是iOS
+         * @property {Boolean} isAndroid - 是否是Android手机
+         * @property {Boolean} isAndroidPad - 是否是Android平板
+         */
         lib.env.os = {
             name: 'Windows Phone',
             isWindowsPhone: true,
@@ -155,8 +249,23 @@
 
     var ua = window.navigator.userAgent;
     var matched;
-    
+
     if((matched = ua.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/))) {
+        /**
+         * @instance browser
+         * @memberof lib.env
+         * @property {String} name - 浏览器名称，比如UC/QQ/Firefox/Chrome/Android/Safari/iOS Webview/Chrome Webview/IE/IEMobile/unknown等
+         * @property {Version} version - 浏览器版本号
+         * @property {Boolean} isUC - 是否是UC浏览器
+         * @property {Boolean} isQQ - 是否是QQ浏览器
+         * @property {Boolean} isIE - 是否是IE浏览器
+         * @property {Boolean} isIEMobile - 是否是IE移动版浏览器
+         * @property {Boolean} isIELikeWebkit - 是否是IE兼容了Webkit特性的浏览器
+         * @property {Boolean} isChrome - 是否是Chrome浏览器
+         * @property {Boolean} isAndroid - 是否是Android的原生浏览器
+         * @property {Boolean} isSafari - 是否是Safari浏览器
+         * @property {Boolean} isWebview - 是否是iOS下的Webview或Android下Chrome的Webview
+         */
         lib.env.browser = {
             name: 'UC',
             isUC: true,
@@ -240,7 +349,6 @@
 ;(function(window, lib) {
     lib.env = lib.env || {};
     
-    //var ttid = lib.env.params['ttid'];
     var ua = window.navigator.userAgent;
 
     var windvane;
@@ -269,43 +377,6 @@
             platform = lib.env.os.name;
         }
     }
-    // 去除针对较老客户端的兼容性逻辑
-    /* else if ((matched = ua.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
-        aliapp = true;
-        appname = matched[1];
-        platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
-        version = matched[3];
-    }else if (ttid && (matched = ttid.match(/@([^_@]+)_(iphone|android|ipad|apad)_([\d\.]+)/))) {
-        aliapp = true;
-        appname = matched[1];
-        platform = matched[2].replace(/^ip/, 'iP').replace(/^a/, 'A');
-        version = matched[3];
-    }else if (windvane) {
-        aliapp = true;
-        platform = lib.env.os.name;
-
-        var wvver = lib.version(windvane);
-        if (lib.env.os.isAndroid) {
-            if (wvver.gte('2.5.1') && wvver.lte('2.5.5')) {
-                appname = 'taobao';
-                version = '3.9.2';
-            } else if (wvver.eq('2.5.6')) {
-                appname = 'taobao';
-                version = '3.9.3';
-            } else if (wvver.eq('2.6.0')) {
-                appname = 'taobao';
-                version = '3.9.5';
-            }
-        } else if (lib.env.os.isIOS) {
-            if (wvver.gte('2.5.0') && wvver.lt('2.6.0')) {
-                appname = 'taobao';
-                version = '3.4.0';
-            } else if (wvver.eq('2.6.0')) {
-                appname = 'taobao';
-                version = '3.4.5';
-            }
-        }
-    } */
 
     // 兼容手淘的一个bug，在webview初始化异常时，在ua中只包含TBIOS字样，也认为是手淘webview。
     if (!appname && ua.indexOf('TBIOS') > 0) {
@@ -313,9 +384,17 @@
     }
 
     if (aliapp) {
+        /**
+         * @instance aliapp
+         * @memberof lib.env
+         * @property {Version} windavne - windvane的版本
+         * @property {String} appanem - App的名称，比如TB/TM等
+         * @property {Version} version - 客户端的版本
+         * @property {String} platform - 平台名称，比如iPhone/iPad/Android/AndroidPad等
+         */
         lib.env.aliapp = {
             windvane: lib.version(windvane || '0.0.0'),
-            appname: (appname === 'taobao'?'TB':appname) || 'unkown',
+            appname: appname || 'unkown',
             version: lib.version(version || '0.0.0'),
             platform: platform || lib.env.os.name
         }
@@ -327,3 +406,6 @@
     lib.env.taobaoApp = lib.env.aliapp;
 
 })(window, window['lib'] || (window['lib'] = {}));
+/**
+ * @namespace lib.env
+ */

@@ -1,0 +1,25 @@
+{
+  "name": "lib.env",
+  "authors": [
+    "zhuxun.jb <zhuxun.jb@taobao.com>"
+  ],
+  "main": "build/env.js",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:mtb/lib-env.git"
+  },
+  "keywords": [
+    "env",
+    "lib"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/*",
+    "*",
+    "!build/*",
+    "!README.md"
+  ],
+  "devDependencies": {
+    "docs-template": "git@gitlab.alibaba-inc.com:h5-interaction/docs-template.git#master"
+  }
+}

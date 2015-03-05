@@ -5,10 +5,11 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         name: 'env',
         srcPath: 'src',
+        apidocPath: 'api',
         assetsPath: 'assets',
         distPath: 'build',
 
-        clean: ['<%= distPath %>/*'],
+        clean: ['<%= distPath %>/*', '<%= apidocPath%>/*'],
 
         copy: {
             main: {
@@ -55,6 +56,11 @@ module.exports = function(grunt) {
             js: {
                 files: ['<%= srcPath %>/*.js', '<%= srcPath %>/**/*.js'],
                 tasks: ['copy', 'depconcat', 'uglify', 'depcombo']
+            },
+
+            jsdoc: {
+                files: ['<%= srcPath %>/*.js', 'README.md'],
+                tasks: ['jsdoc']
             }
         },
 
@@ -86,6 +92,16 @@ module.exports = function(grunt) {
                     ext: '.cmd.js'
                 }]
             }
+        },
+
+        jsdoc: {
+            main : {
+                src: ['<%= srcPath %>/*.js', 'README.md'],
+                options: {
+                    destination: '<%= apidocPath %>',
+                    template: 'bower_components/docs-template'
+                }
+            }
         }
     });
 
@@ -96,9 +112,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-jsdoc');
 
-
-    grunt.registerTask('dist', ['clean','copy', 'depconcat', 'uglify', 'depcombo', 'cmdwrap']);
+    grunt.registerTask('dist', ['clean','copy', 'depconcat', 'uglify', 'depcombo', 'cmdwrap', 'jsdoc']);
     grunt.registerTask('dev', ['watch']);
 
     grunt.registerTask('default', ['dist']);
