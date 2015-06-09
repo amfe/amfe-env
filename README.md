@@ -1,8 +1,8 @@
-#lib.env
+#lib-env
 
 ## 最新版本
 
-**1.5.0**
+**1.5.1**
 
 ## 安装依赖
 
@@ -19,8 +19,8 @@
 
 ### aliapp.appname对应的值（供参考）
 
-![appname](http://gtms03.alicdn.com/tps/i3/TB19Ih2HpXXXXcgXXXXHjbX.XXX-556-724.png)
+![appname](http://gw.alicdn.com/tps/i3/TB19Ih2HpXXXXcgXXXXHjbX.XXX-556-724.png)
 
-## [APIs](/mtb/lib-env/raw/master/api/index.html)
+## [APIs](http://gitlab.alibaba-inc.com/mtb/lib-env/raw/master/api/index.html)
 
-## [changelog](/mtb/lib-env/blob/master/CHANGELOG.md)
+## [changelog](http://gitlab.alibaba-inc.com/mtb/lib-env/blob/master/CHANGELOG.md)

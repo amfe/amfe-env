@@ -1,8 +1,8 @@
 $(function () {
     // Search Items
-    $('#search').on('keyup', function (e) {
+    $('#doc-search').on('keyup', function (e) {
         var value = $(this).val();
-        var $el = $('.navigation');
+        var $el = $('.doc-navigation');
 
         if (value) {
             var regexp = new RegExp(value, 'i');
@@ -25,33 +25,42 @@ $(function () {
     });
 
     // Toggle when click an item element
-    $('.navigation').on('click', '.title', function (e) {
+    $('.doc-navigation').on('click', '.title', function (e) {
         $(this).parent().find('.itemMembers').toggle();
     });
 
     // Show an item related a current documentation automatically
     var filename = $('.page-title').data('filename').replace(/\.[a-z]+$/, '');
-    var $currentItem = $('.navigation .item[data-name*="' + filename + '"]:eq(0)');
+    var $currentItem = $('.doc-navigation .item[data-name*="' + filename + '"]:eq(0)');
 
     if ($currentItem.length) {
         $currentItem
-            .remove()
-            .prependTo('.navigation .list')
+            // .remove()
+            // .prependTo('.doc-navigation .list')
             .show()
             .find('.itemMembers')
                 .show();
     }
 
-    // Auto resizing on navigation
+    // Auto resizing on.doc-navigation
     var _onResize = function () {
         var height = $(window).height();
-        var $el = $('.navigation');
+        var $el = $('.doc-navigation');
 
         $el.height(height).find('.list').height(height - 133);
     };
 
     $(window).on('resize', _onResize);
     _onResize();
+
+    var _onHashChange = function() {
+        var name = location.href.split('/').pop();
+        $('.doc-navigation .cur-link').removeClass('cur-link');
+        $('.doc-navigation  a[href="' + name + '"]').addClass('cur-link');
+    }
+    $(window).on('hashchange', _onHashChange);
+    _onHashChange();
+
 
     // disqus code
     if (config.disqus) {

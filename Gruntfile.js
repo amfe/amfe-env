@@ -99,7 +99,7 @@ module.exports = function(grunt) {
                 src: ['<%= srcPath %>/*.js', 'README.md'],
                 options: {
                     destination: '<%= apidocPath %>',
-                    template: 'bower_components/docs-template'
+                    template: 'bower_components/jsdoc'
                 }
             }
         }

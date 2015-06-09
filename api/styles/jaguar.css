@@ -22,81 +22,97 @@ li {
   background-color: gray;
   border-radius: 4px;
 }
-.navigation {
+.doc-navigation {
   position: fixed;
   float: left;
   width: 250px;
   height: 100%;
   background-color: #1a1a1a;
 }
-.navigation .applicationName {
+.doc-navigation .applicationName {
   margin: 0;
   margin-top: 15px;
   padding: 10px 15px;
   font: bold 1.25em Helvetica;
   color: #fff;
 }
-.navigation .applicationName a {
+.doc-navigation .applicationName a {
   color: #fff;
 }
-.navigation .search {
+.doc-navigation .search {
   padding: 10px 15px;
 }
-.navigation .search input {
+.doc-navigation .search input {
   background-color: #333;
   color: #fff;
   border-color: #555;
 }
-.navigation .list {
+.doc-navigation .list {
   padding: 10px 15px 0 15px;
   position: relative;
   overflow: auto;
   width: 100%;
 }
-.navigation li.item {
+.doc-navigation li.item {
   margin-bottom: 8px;
   padding-bottom: 8px;
   border-bottom: 1px solid #333;
 }
-.navigation li.item a {
+.doc-navigation li.item a {
   color: #bbb;
 }
-.navigation li.item a:hover {
+.doc-navigation li.item a:hover {
   color: #fff;
 }
-.navigation li.item .title {
+.doc-navigation li.item a.cur-link {
+  color: #fff;
+  text-decoration: underline;
+}
+.doc-navigation li.item .title {
   cursor: pointer;
   position: relative;
   display: block;
   font-size: 0.8em;
 }
-.navigation li.item .title a {
+.doc-navigation li.item .title a {
   color: #e1e1e1;
 }
-.navigation li.item .title a:hover {
+.doc-navigation li.item .title a:hover {
   color: #fff;
 }
-.navigation li.item .title .static {
+.doc-navigation li.item .title a.cur-link {
+  color: #fff;
+  text-decoration: underline;
+}
+.doc-navigation li.item .title .static,
+.doc-navigation li.item .title .class,
+.doc-navigation li.item .title .namespace {
   display: block;
   border-radius: 3px;
-  background-color: #779c34;
   color: #000;
   font-size: 0.7em;
   padding: 2px 4px;
   float: right;
 }
-.navigation li.item .subtitle {
+.doc-navigation li.item .title .static,
+.doc-navigation li.item .title .namespace {
+  background-color: #779c34;
+}
+.doc-navigation li.item .title .class {
+  background-color: #e0b01f;
+}
+.doc-navigation li.item .subtitle {
   margin-top: 10px;
   font: bold 0.65em Helvetica;
   color: #779c34;
   display: block;
 }
-.navigation li.item ul > li {
+.doc-navigation li.item ul > li {
   font-size: 0.7em;
   padding-left: 8px;
   margin-top: 2px;
 }
-.navigation li.item .itemMembers {
+.doc-navigation li.item .itemMembers {
   display: none;
 }
 .main {
