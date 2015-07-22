@@ -1,5 +1,5 @@
 {
-  "name": "lib.env",
+  "name": "@ali/lib-env",
   "description": "a environment checking library",
   "version": "1.5.0",
   "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-env",
@@ -20,7 +20,8 @@
     "node": ">= 0.8.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "@ali/grunt-commonizor": "~0.2.13",
+    "grunt": "~0.4.5",
     "grunt-cmdwrap": "^0.1.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
@@ -35,5 +36,9 @@
   "keywords": [
     "lib",
     "env"
-  ]
+  ],
+  "main": "build/env.common.js",
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
 }
