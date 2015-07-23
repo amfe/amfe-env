@@ -1,10 +1,13 @@
 {
-  "name": "lib-env",
-  "description": "a environment checking library",
+  "name": "@ali/lib-env",
   "version": "1.5.1",
+  "description": "移动端环境检查库",
   "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-env",
   "author": [
-    "渚薰"
+    {
+      "name": "zhuxun.jb",
+      "email": "zhuxun.jb@alibaba-inc.com"
+    }
   ],
   "repository": {
     "type": "git",
@@ -20,7 +23,8 @@
     "node": ">= 0.8.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "@ali/grunt-commonizor": "~0.2.15",
+    "grunt": "~0.4.5",
     "grunt-cmdwrap": "^0.1.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
@@ -35,5 +39,9 @@
   "keywords": [
     "lib",
     "env"
-  ]
+  ],
+  "main": "build/env.common.js",
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com"
+  }
 }

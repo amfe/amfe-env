@@ -94,6 +94,16 @@ module.exports = function(grunt) {
             }
         },
 
+        commonizor: {
+            js: {
+                files: [{
+                    src: ['<%=distPath%>/<%=name%>.js'],
+                    dest: '<%=distPath%>',
+                    ext: '.common.js'
+                }]
+            }
+        }, 
+
         jsdoc: {
             main : {
                 src: ['<%= srcPath %>/*.js', 'README.md'],
@@ -113,8 +123,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-jsdoc');
+    grunt.loadNpmTasks('@ali/grunt-commonizor');
 
-    grunt.registerTask('dist', ['clean','copy', 'depconcat', 'uglify', 'depcombo', 'cmdwrap', 'jsdoc']);
+    grunt.registerTask('dist', ['clean', 'depconcat', 'uglify', 'depcombo', 'cmdwrap', 'commonizor', 'jsdoc', 'copy']);
     grunt.registerTask('dev', ['watch']);
 
     grunt.registerTask('default', ['dist']);
