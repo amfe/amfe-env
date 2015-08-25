@@ -1,5 +1,9 @@
 # changelog
 
+## 1.5.2
+
+- bugfix: browser版本号
+
 ## 1.5.1
 
 - 升级文档
