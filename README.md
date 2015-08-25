@@ -1,5 +1,7 @@
 # lib-env
 
+![构建状态](http://cise.alibaba-inc.com/task/77374/status.svg)
+
 ## 最新版本
 
 **1.5.6**
