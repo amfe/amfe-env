@@ -40,6 +40,9 @@
     "lib",
     "env"
   ],
+  "scripts": {
+    "test": "casperjs test test/env-test.js"
+  },
   "main": "build/env.common.js",
   "publishConfig": {
     "registry": "http://registry.npm.alibaba-inc.com"
