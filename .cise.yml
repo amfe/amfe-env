@@ -5,6 +5,7 @@ stage:
       - yum install -y alinode-iojs-1.8.1 -b current
       - rm -f /opt/taobao/node
       - ln -s /opt/taobao/install/iojs-1.8.1 /opt/taobao/node
+      - git config --global http.sslVerify false
       - PATH=/opt/taobao/node/bin:$PATH npm i tnpm -g --registry=http://registry.npm.alibaba-inc.com
       - PATH=/opt/taobao/node/bin:$PATH tnpm i
       - PATH=/opt/taobao/node/bin:$PATH tnpm install -g phantomjs@1.9.17
@@ -21,6 +22,7 @@ stage:
       - yum install -y alinode-iojs-0.12.0 -b current
       - rm -f /opt/taobao/node
       - ln -s /opt/taobao/install/iojs-0.12.0 /opt/taobao/node
+      - git config --global http.sslVerify false
       - PATH=/opt/taobao/node/bin:$PATH npm i tnpm -g --registry=http://registry.npm.alibaba-inc.com
       - PATH=/opt/taobao/node/bin:$PATH tnpm i
       - PATH=/opt/taobao/node/bin:$PATH tnpm install -g phantomjs@1.9.17
@@ -37,6 +39,7 @@ stage:
       - yum install -y alinode-iojs-0.11.12 -b current
       - rm -f /opt/taobao/node
       - ln -s /opt/taobao/install/iojs-0.11.12 /opt/taobao/node
+      - git config --global http.sslVerify false
       - PATH=/opt/taobao/node/bin:$PATH npm i tnpm -g --registry=http://registry.npm.alibaba-inc.com
       - PATH=/opt/taobao/node/bin:$PATH tnpm i
       - PATH=/opt/taobao/node/bin:$PATH tnpm install -g phantomjs@1.9.17
