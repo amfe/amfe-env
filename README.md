@@ -1,10 +1,7 @@
 # lib-env
 
+[![tnpm版本](http://web.npm.alibaba-inc.com/badge/v/@ali/lib-env.svg?style=flat-square)](http://web.npm.alibaba-inc.com/package/@ali/lib-env)
 ![构建状态](http://cise.alibaba-inc.com/task/77374/status.svg)
-
-## 最新版本
-
-**1.5.6**
 
 ## 安装依赖
 
