@@ -1,6 +1,6 @@
 # changelog
 
-## 1.5.6
+## 1.5.7
 
 - bugfix: browser版本号
 
