@@ -49,4 +49,4 @@ stage:
       - PYTHON=python2.6 PATH=/opt/taobao/node/bin:$PATH tnpm test
 
 pipeline:
-- iojs-1, alinode-3.0.0, node-2.5.0
+- iojs-1, alinode-3.0.0, alinode-2.5.0
