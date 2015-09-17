@@ -6,5 +6,10 @@
 //@require thirdapp
 
 /**
- * @namespace lib.env
+ * @namespace lib
+ */
+
+/**
+ * @namespace env
+ * @memberOf lib
  */

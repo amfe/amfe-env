@@ -7,10 +7,10 @@
     
     if ((matched = ua.match(/Windows\sPhone\s(?:OS\s)?([\d\.]+)/))) {
         /**
-         * @instance os
+         * @type {Object}
          * @memberof lib.env
          * @property {String} name - 操作系统名称，比如Android/AndroidPad/iPhone/iPod/iPad/Windows Phone/unknown等
-         * @property {Version} version - 操作系统版本号
+         * @property {lib.env~Version} version - 操作系统版本号
          * @property {Boolean} isWindowsPhone - 是否是Windows Phone
          * @property {Boolean} isIPhone - 是否是iPhone/iTouch
          * @property {Boolean} isIPad - 是否是iPad

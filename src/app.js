@@ -41,11 +41,11 @@
 
     if (aliapp) {
         /**
-         * @instance aliapp
+         * @type {Object}
          * @memberof lib.env
-         * @property {Version} windavne - windvane的版本
+         * @property {lib.env~Version} windavne - windvane的版本
          * @property {String} appanem - App的名称，比如TB/TM等
-         * @property {Version} version - 客户端的版本
+         * @property {lib.env~Version} version - 客户端的版本
          * @property {String} platform - 平台名称，比如iPhone/iPad/Android/AndroidPad等
          */
         lib.env.aliapp = {

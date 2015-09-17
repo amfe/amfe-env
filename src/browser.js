@@ -7,10 +7,10 @@
 
     if((matched = ua.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/))) {
         /**
-         * @instance browser
+         * @type {Object}
          * @memberof lib.env
          * @property {String} name - 浏览器名称，比如UC/QQ/Firefox/Chrome/Android/Safari/iOS Webview/Chrome Webview/IE/IEMobile/unknown等
-         * @property {Version} version - 浏览器版本号
+         * @property {lib.env~Version} version - 浏览器版本号
          * @property {Boolean} isUC - 是否是UC浏览器
          * @property {Boolean} isQQ - 是否是QQ浏览器
          * @property {Boolean} isIE - 是否是IE浏览器

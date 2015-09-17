@@ -1,12 +1,9 @@
 ;(function(win, lib) {
-    /**
-     * @namespace lib
-     */
+
     lib.env = lib.env || {};
-    
     /**
-     * 操作版本号
-     * @class Version
+     * 版本好
+     * @class lib.env~Version
      * @param {String} v - 版本号字符串
      */
     function Version(v){
@@ -151,7 +148,7 @@
      * 解析和操作版本号
      * @method version
      * @param {string} v - 需要解析的版本号
-     * @return {Version} Verson实例
+     * @return {lib.env~Version} Verson实例
      * @memberof lib
      */
     lib.version = function(v) {
