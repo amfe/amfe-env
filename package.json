@@ -1,6 +1,6 @@
 {
   "name": "@ali/lib-env",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "移动端环境检查库",
   "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-env",
   "author": [
@@ -25,13 +25,14 @@
   "devDependencies": {
     "@ali/grunt-commonizor": "~0.2.15",
     "grunt": "~0.4.5",
-    "grunt-cmdwrap": "^0.1.2",
+    "grunt-cmdwrap": "^0.1.4",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.4.0",
     "grunt-depcombo": "^0.2.3",
-    "grunt-depconcat": "^0.2.1"
+    "grunt-depconcat": "^0.2.1",
+    "grunt-jsdoc": "^0.5.8"
   },
   "dependencies": {},
   "combo": {},

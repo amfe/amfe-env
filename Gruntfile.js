@@ -125,7 +125,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('@ali/grunt-commonizor');
 
-    grunt.registerTask('dist', ['clean', 'depconcat', 'uglify', 'depcombo', 'cmdwrap', 'commonizor', 'copy']);
+    grunt.registerTask('dist', ['clean', 'depconcat', 'uglify', 'depcombo', 'cmdwrap', 'commonizor', 'copy', 'jsdoc']);
     grunt.registerTask('dev', ['watch']);
 
     grunt.registerTask('default', ['dist']);

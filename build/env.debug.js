@@ -1,12 +1,9 @@
 ;(function(win, lib) {
-    /**
-     * @namespace lib
-     */
+
     lib.env = lib.env || {};
-    
     /**
-     * 操作版本号
-     * @class Version
+     * 版本好
+     * @class lib.env~Version
      * @param {String} v - 版本号字符串
      */
     function Version(v){
@@ -151,7 +148,7 @@
      * 解析和操作版本号
      * @method version
      * @param {string} v - 需要解析的版本号
-     * @return {Version} Verson实例
+     * @return {lib.env~Version} Verson实例
      * @memberof lib
      */
     lib.version = function(v) {
@@ -191,10 +188,10 @@
     
     if ((matched = ua.match(/Windows\sPhone\s(?:OS\s)?([\d\.]+)/))) {
         /**
-         * @instance os
+         * @type {Object}
          * @memberof lib.env
          * @property {String} name - 操作系统名称，比如Android/AndroidPad/iPhone/iPod/iPad/Windows Phone/unknown等
-         * @property {Version} version - 操作系统版本号
+         * @property {lib.env~Version} version - 操作系统版本号
          * @property {Boolean} isWindowsPhone - 是否是Windows Phone
          * @property {Boolean} isIPhone - 是否是iPhone/iTouch
          * @property {Boolean} isIPad - 是否是iPad
@@ -252,10 +249,10 @@
 
     if((matched = ua.match(/(?:UCWEB|UCBrowser\/)([\d\.]+)/))) {
         /**
-         * @instance browser
+         * @type {Object}
          * @memberof lib.env
          * @property {String} name - 浏览器名称，比如UC/QQ/Firefox/Chrome/Android/Safari/iOS Webview/Chrome Webview/IE/IEMobile/unknown等
-         * @property {Version} version - 浏览器版本号
+         * @property {lib.env~Version} version - 浏览器版本号
          * @property {Boolean} isUC - 是否是UC浏览器
          * @property {Boolean} isQQ - 是否是QQ浏览器
          * @property {Boolean} isIE - 是否是IE浏览器
@@ -355,7 +352,7 @@
     
     if (!!ua.match(/Weibo/i)) {
         /**
-         * @instance thirdapp
+         * @type {Object}
          * @memberof lib.env
          * @property {String} appname - 操作系统名称，比如Weibo/Weixin/unknown等
          * @property {Boolean} isWeibo - 是否是微博
@@ -413,11 +410,11 @@
 
     if (aliapp) {
         /**
-         * @instance aliapp
+         * @type {Object}
          * @memberof lib.env
-         * @property {Version} windavne - windvane的版本
+         * @property {lib.env~Version} windavne - windvane的版本
          * @property {String} appanem - App的名称，比如TB/TM等
-         * @property {Version} version - 客户端的版本
+         * @property {lib.env~Version} version - 客户端的版本
          * @property {String} platform - 平台名称，比如iPhone/iPad/Android/AndroidPad等
          */
         lib.env.aliapp = {
@@ -435,5 +432,10 @@
 
 })(window, window['lib'] || (window['lib'] = {}));
 /**
- * @namespace lib.env
+ * @namespace lib
+ */
+
+/**
+ * @namespace env
+ * @memberOf lib
  */

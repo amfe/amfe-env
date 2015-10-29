@@ -7,7 +7,7 @@
     
     if (!!ua.match(/Weibo/i)) {
         /**
-         * @instance thirdapp
+         * @type {Object}
          * @memberof lib.env
          * @property {String} appname - 操作系统名称，比如Weibo/Weixin/unknown等
          * @property {Boolean} isWeibo - 是否是微博

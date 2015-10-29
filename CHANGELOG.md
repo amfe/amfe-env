@@ -1,5 +1,9 @@
 # changelog
 
+## 1.5.8
+
+- 增强文档可读性
+
 ## 1.5.7
 
 - bugfix: browser版本号
