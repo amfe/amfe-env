@@ -1,6 +1,6 @@
 # changelog
 
-## 1.5.9
+## 1.5.10
 
 - appname支持小写
 
