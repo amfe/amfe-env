@@ -17,7 +17,7 @@
     var appname = '';
     var platform = '';
     var version = '';
-    if ((matched = ua.match(/AliApp\(([A-Z\-]+)\/([\d\.]+)\)/))) {
+    if ((matched = ua.match(/AliApp\(([A-Z\-]+)\/([\d\.]+)\)/i))) {
         aliapp = true;
         appname = matched[1];
         version = matched[2];
@@ -44,7 +44,7 @@
          * @type {Object}
          * @memberof lib.env
          * @property {lib.env~Version} windavne - windvane的版本
-         * @property {String} appanem - App的名称，比如TB/TM等
+         * @property {String} appname - App的名称，比如TB/TM等
          * @property {lib.env~Version} version - 客户端的版本
          * @property {String} platform - 平台名称，比如iPhone/iPad/Android/AndroidPad等
          */
