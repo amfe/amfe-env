@@ -1,5 +1,9 @@
 # changelog
 
+## 1.5.11
+
+- 升级commonizor模块，重新编译cmd.js
+
 ## 1.5.10
 
 - appname支持小写
