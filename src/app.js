@@ -17,6 +17,8 @@
     var appname = '';
     var platform = '';
     var version = '';
+    var poplayer = false;
+    var poplayerVersion = '';
     if ((matched = ua.match(/AliApp\(([A-Z\-]+)\/([\d\.]+)\)/i))) {
         aliapp = true;
         appname = matched[1];
@@ -39,6 +41,12 @@
         appname = 'TB';
     }
 
+    // 判断poplayer
+    if ((matched = ua.match(/PopLayer\/([\d\.]+)/i))) {
+        poplayer = true;
+        poplayerVersion = matched[1];
+    }
+
     if (aliapp) {
         /**
          * @type {Object}
@@ -52,7 +60,9 @@
             windvane: lib.version(windvane || '0.0.0'),
             appname: appname || 'unkown',
             version: lib.version(version || '0.0.0'),
-            platform: platform || lib.env.os.name
+            platform: platform || lib.env.os.name,
+            poplayer : poplayer || false,
+            poplayerVersion: lib.version(poplayerVersion || '0.0.0')
         }
     } else {
         lib.env.aliapp = false;
