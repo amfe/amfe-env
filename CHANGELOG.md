@@ -1,4 +1,7 @@
 # changelog
+## 1.5.11
+
+- 支持poplayer的检测. lib.aliapp.poplayer; lib.aliapp.poplayerVersion
 
 ## 1.5.10
 
