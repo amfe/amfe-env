@@ -53,6 +53,8 @@
          * @memberof lib.env
          * @property {lib.env~Version} windavne - windvane的版本
          * @property {String} appname - App的名称，比如TB/TM等
+         * @property {lib.env~Version} poplayerVersion - poplayer的版本
+         * @property {Boolean} poplayer - 是否在poplayer中，默认为false
          * @property {lib.env~Version} version - 客户端的版本
          * @property {String} platform - 平台名称，比如iPhone/iPad/Android/AndroidPad等
          */
