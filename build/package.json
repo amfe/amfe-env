@@ -1,6 +1,6 @@
 {
   "name": "@ali/lib-env",
-  "version": "1.5.11",
+  "version": "1.5.12",
   "description": "移动端环境检查库",
   "homepage": "http://gitlab.alibaba-inc.com/mtb/lib-env",
   "author": [
