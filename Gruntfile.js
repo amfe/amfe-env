@@ -95,14 +95,16 @@ module.exports = function(grunt) {
         },
 
         commonizor: {
-            js: {
+            main: {
                 files: [{
-                    src: ['<%=distPath%>/<%=name%>.js'],
+                    expand: true,
+                    cwd: '<%= distPath%>',
+                    src: ['<%= name%>.js'],
                     dest: '<%=distPath%>',
                     ext: '.common.js'
                 }]
             }
-        }, 
+        },
 
         jsdoc: {
             main : {
