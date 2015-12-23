@@ -1,4 +1,8 @@
 # changelog
+
+## 1.5.13
+- poplayer检测方式更新，由从ua中读取变为从全局变量`_ua_popLayer`中取
+
 ## 1.5.12
 
 - 支持poplayer的检测. lib.env.aliapp.poplayer; lib.env.aliapp.poplayerVersion

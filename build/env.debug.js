@@ -375,7 +375,7 @@
 })(window, window['lib'] || (window['lib'] = {}));
 ;(function(window, lib) {
     lib.env = lib.env || {};
-    
+
     var ua = window.navigator.userAgent;
 
     var windvane;
@@ -388,6 +388,10 @@
     var appname = '';
     var platform = '';
     var version = '';
+
+    // poplayer相关信息，在poplayer会有该字段，形如 window._ua_popLayer = 'PopLayer/1.3.4'
+    // poplayer信息不在ua中是因为在IOS下，修改poplayer层的ua会导致所有webview的ua改变，所以只能写在全局变量中
+    var poplayerInfo = window._ua_popLayer || '';
     var poplayer = false;
     var poplayerVersion = '';
     if ((matched = ua.match(/AliApp\(([A-Z\-]+)\/([\d\.]+)\)/i))) {
@@ -413,7 +417,7 @@
     }
 
     // 判断poplayer
-    if ((matched = ua.match(/PopLayer\/([\d\.]+)/i))) {
+    if ( poplayerInfo && (matched = poplayerInfo.match(/PopLayer\/([\d\.]+)/i))) {
         poplayer = true;
         poplayerVersion = matched[1];
     }
