@@ -74,22 +74,22 @@
             version: matched[1]
         }
     } else if(ua.match(/iPhone|iPad|iPod/)) {
-        if(ua.match(/Safari/)) {
-            matched = ua.match(/Version\/([\d\.]+)/)
+        if(ua.match(/Safari/) && (matched = ua.match(/Version\/([\d\.]+)/))) {
             lib.env.browser = {
                 name: 'Safari',
                 isSafari: true,
                 version: matched[1]
             }
-        } else {
-            matched = ua.match(/OS ([\d_\.]+) like Mac OS X/);
+        } else if ((matched = ua.match(/OS ([\d_\.]+) like Mac OS X/))) {
             lib.env.browser = {
                 name: 'iOS Webview',
                 isWebview: true,
                 version: matched[1].replace(/\_/g, '.')
             }
         }
-    } else {
+    }
+
+    if (!lib.env.browser) {
         lib.env.browser = {
             name:'unknown',
             version:'0.0.0'
