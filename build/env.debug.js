@@ -263,6 +263,7 @@
          * @property {Boolean} isIEMobile - 是否是IE移动版浏览器
          * @property {Boolean} isIELikeWebkit - 是否是IE兼容了Webkit特性的浏览器
          * @property {Boolean} isChrome - 是否是Chrome浏览器
+         * @property {Boolean} isFirefox - 是否是Firefox浏览器
          * @property {Boolean} isAndroid - 是否是Android的原生浏览器
          * @property {Boolean} isSafari - 是否是Safari浏览器
          * @property {Boolean} isWebview - 是否是iOS下的Webview或Android下Chrome的Webview
@@ -278,7 +279,7 @@
             isQQ: true,
             version: matched[1]
         }
-    } else if ((matched = ua.match(/Firefox\/([\d\.]+)/))) {
+    } else if ((matched = ua.match(/(?:Firefox|FxiOS)\/([\d\.]+)/))) {
         lib.env.browser = {
             name: 'Firefox',
             isFirefox: true,

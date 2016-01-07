@@ -1,5 +1,8 @@
 # changelog
 
+## 1.5.15
+- 修复Firefox for iOS的识别UA出错的问题
+
 ## 1.5.14
 - 修改非法UA修改后，代码出错的问题
 
