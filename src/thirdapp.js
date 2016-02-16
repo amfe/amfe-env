@@ -1,28 +1,28 @@
-;
-(function(window, lib) {
-    lib.env = lib.env || {};
+const ua = window.navigator.userAgent;
 
-    var ua = window.navigator.userAgent;
-    var matched;
-    
-    if (!!ua.match(/Weibo/i)) {
-        /**
-         * @instance thirdapp
-         * @memberof lib.env
-         * @property {String} appname - 操作系统名称，比如Weibo/Weixin/unknown等
-         * @property {Boolean} isWeibo - 是否是微博
-         * @property {Boolean} isWeixin - 是否是微信
-         */
-        lib.env.thirdapp = {
-            appname: 'Weibo',
-            isWeibo: true
-        }
-    } else if(!!ua.match(/MicroMessenger/i)) {
-        lib.env.thirdapp = {
-            appname: 'Weixin',
-            isWeixin: true
-        }
-    } else {
-        lib.env.thirdapp = false;
-    }
-})(window, window['lib'] || (window['lib'] = {}));
+var thirdapp;
+
+if (ua.match(/Weibo/i)) {
+    /**
+     * @type {Object}
+     * @memberof lib.env
+     * @property {String} appname - 操作系统名称，比如Weibo/Weixin/unknown等
+     * @property {Boolean} isWeibo - 是否是微博
+     * @property {Boolean} isWeixin - 是否是微信
+     */
+    thirdapp = {
+        appname: 'Weibo',
+        isWeibo: true
+    };
+} else if(ua.match(/MicroMessenger/i)) {
+    thirdapp = {
+        appname: 'Weixin',
+        isWeixin: true
+    };
+    /* istanbul ignore next */
+} else {
+    /* istanbul ignore next */
+    thirdapp = false;
+}
+
+export default thirdapp;

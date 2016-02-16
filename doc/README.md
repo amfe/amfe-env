@@ -3,7 +3,7 @@
 ![npm version](http://img.shields.io/npm/v/amfe-env.svg)
 ![ci status](https://api.travis-ci.org/amfe/amfe-env.svg?branch=master)
 
-## [Visiting Site](http://amfe.github.io/amfe-env/)
+Parsing User-Agent on a mobile device, could detecting what os/browser/app.
 
 ## License
 

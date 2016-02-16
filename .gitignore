@@ -1,3 +1,11 @@
+release
+coverage
+dist
+site
+doc/_book
+sitetpl
+node_modules
 .DS_Store
-/node_modules
-/bower_components
+server.log
+server.pid
+npm-debug.log
