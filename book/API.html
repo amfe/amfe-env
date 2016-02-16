@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>The API | amfe-env</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="./CHANGELOG.html" />
+    
+    
+    <link rel="prev" href="./QuickStart.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="2"
+        data-chapter-title="The API"
+        data-filepath="API.md"
+        data-basepath="."
+        data-revision="Tue Feb 16 2016 20:17:14 GMT+0800 (CST)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="./index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Overview
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="QuickStart.html">
+            
+                
+                    <a href="./QuickStart.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Getting Started
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="2" data-path="API.html">
+            
+                
+                    <a href="./API.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        The API
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="CHANGELOG.html">
+            
+                
+                    <a href="./CHANGELOG.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Change Logs
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="./" >amfe-env</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="the-api">The API</h1>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {Version, params, os, browser, params, aliapp, thirdapp} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;amfe-env&apos;</span>;
+</code></pre>
+<h2 id="version">Version</h2>
+<p>A class which could compare a string of version.</p>
+<h3 id="constrcutor">Constrcutor</h3>
+<h4 id="new-versionver">new Version(ver)</h4>
+<p>create an instance of Version.</p>
+<pre><code class="lang-jsdoc">@param {string} ver - a string of version like &apos;1.0.0&apos;;
+</code></pre>
+<h3 id="methods">Methods</h3>
+<h4 id="tostring">toString()</h4>
+<p>return a string of this version.</p>
+<pre><code class="lang-jsdoc">@return {string}
+</code></pre>
+<h4 id="gtv">gt(v)</h4>
+<p>check if is great then a giving version.</p>
+<pre><code class="lang-jsdoc">@param {string|Version} v - a string of version or an instance of Version.
+@return {boolean}
+</code></pre>
+<h4 id="gtev">gte(v)</h4>
+<p>check if is great then or equal with a giving version.</p>
+<pre><code class="lang-jsdoc">@param {string|Version} v - a string of version or an instance of Version.
+@return {boolean}
+</code></pre>
+<h4 id="ltv">lt(v)</h4>
+<p>check if is less then a giving version.</p>
+<pre><code class="lang-jsdoc">@param {string|Version} v - a string of version or an instance of Version.
+@return {boolean}
+</code></pre>
+<h4 id="ltev">lte(v)</h4>
+<p>check if is less then or equal with a giving version.</p>
+<pre><code class="lang-jsdoc">@param {string|Version} v - a string of version or an instance of Version.
+@return {boolean}
+</code></pre>
+<h4 id="eqv">eq(v)</h4>
+<p>check if is equal with a giving version.</p>
+<pre><code class="lang-jsdoc">@param {string|Version} v - a string of version or an instance of Version.
+@return {boolean}
+</code></pre>
+<h3 id="class-methods">Class Methods</h3>
+<h4 id="versioncomparev1-v2">Version.compare(v1, v2)</h4>
+<p>compare v1 with v2.</p>
+<pre><code class="lang-jsdoc">@param {string|Version} v1 - a string of version or an instance of Version.
+@param {string|Version} v2 - a string of version or an instance of Version.
+@return {number} - 1 if v1 is great then v2, -1 if v1 is less then v2, 0 if v1 is equal with v2.
+</code></pre>
+<h2 id="params">params</h2>
+<pre><code class="lang-jsdoc">@type {object} a querystring key/value map.
+</code></pre>
+<h2 id="os">os</h2>
+<p>The information of the device operating system.</p>
+<h3 id="osname">os.name</h3>
+<pre><code class="lang-jsdoc">@type {string} the name of os, Android/AndroidPad/iPhone/iPod/iPad/Windows Phone/unknown etc.
+</code></pre>
+<h3 id="osversion">os.version</h3>
+<pre><code class="lang-jsdoc">@type {Version} the version of os, an instance of the Version class.
+</code></pre>
+<h3 id="osiswindowsphone">os.isWindowsPhone</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a Windows Phone.
+</code></pre>
+<h3 id="osisiphone">os.isIPhone</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if an iPhone.
+</code></pre>
+<h3 id="osisipad">os.isIPad</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if an iPad.
+</code></pre>
+<h3 id="osisios">os.isIOS</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if an iOS.
+</code></pre>
+<h3 id="osisandroid">os.isAndroid</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if an iAndroid.
+</code></pre>
+<h3 id="osisandroidpad">os.isAndroidPad</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a AndroidPad.
+</code></pre>
+<h2 id="browser">browser</h2>
+<p>The information of the browser.</p>
+<h3 id="browsername">browser.name</h3>
+<pre><code class="lang-jsdoc">@type {string} the name of the browser&#xFF0C;UC/QQ/Firefox/Chrome/Android/Safari/iOS Webview/Chrome Webview/IE/IEMobile/unknown etc.
+</code></pre>
+<h3 id="browserversion">browser.version</h3>
+<pre><code class="lang-jsdoc">@type {Version} the version of the brwoser&#xFF0C;an instance of the Version class.
+</code></pre>
+<h3 id="browserisuc">browser.isUC</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a UC Browser.
+</code></pre>
+<h3 id="browserisqq">browser.isQQ</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a QQ Browser.
+</code></pre>
+<h3 id="browserisie">browser.isIE</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a Desktop IE Browser.
+</code></pre>
+<h3 id="browserisiemobile">browser.isIEMobile</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a Mobile IE Browser.
+</code></pre>
+<h3 id="browserischrome">browser.isChrome</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a Mobile Chrome Browser.
+</code></pre>
+<h3 id="browserisfirefox">browser.isFirefox</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a Mobile Firefox Browser.
+</code></pre>
+<h3 id="browserisandroid">browser.isAndroid</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a Android Browser.
+</code></pre>
+<h3 id="browserissafari">browser.isSafari</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a Mobile Safari Browser.
+</code></pre>
+<h3 id="browseriswebview">browser.isWebview</h3>
+<pre><code class="lang-jsdoc">@type {boolean} if a webview inside an app.
+</code></pre>
+<h2 id="aliapp">aliapp</h2>
+<p>The information of the app from Alibaba.</p>
+<h3 id="aliappappname">aliapp.appname</h3>
+<pre><code class="lang-jsdoc">@param {string} the name of the app like &apos;TB&apos; or &apos;TB-PD&apos; etc.
+</code></pre>
+<h3 id="aliappversion">aliapp.version</h3>
+<pre><code class="lang-jsdoc">@param {Version} the version of the app.
+</code></pre>
+<h3 id="aliappplatform">aliapp.platform</h3>
+<pre><code class="lang-jsdoc">@param {string} the platform of the app. 
+@see os.name
+</code></pre>
+<h3 id="aliappwindvane">aliapp.windvane</h3>
+<pre><code class="lang-jsdoc">@param {Version} the version of the WindVane sdk.
+</code></pre>
+<h3 id="aliapppoplayer">aliapp.poplayer</h3>
+<pre><code class="lang-jsdoc">@param {boolean} check if a poplayer frame.
+</code></pre>
+<h3 id="aliapppoplayerversion">aliapp.poplayerVersion</h3>
+<pre><code class="lang-jsdoc">@param {Version} the version of the poplayer frame.
+</code></pre>
+<h2 id="thirdapp">thirdapp</h2>
+<p>The information of the non-ali app. </p>
+<h3 id="thirdappappname">thirdapp.appname</h3>
+<pre><code class="lang-jsdoc">@param {string} the name of the app.
+</code></pre>
+<h3 id="thirdappisweibo">thirdapp.isWeibo</h3>
+<pre><code class="lang-jsdoc">@param {string} check if a Weibo app.
+</code></pre>
+<h3 id="thirdappisweixin">thirdapp.isWeixin</h3>
+<pre><code class="lang-jsdoc">@param {string} check if a Weixin app.
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="./QuickStart.html" class="navigation navigation-prev " aria-label="Previous page: Getting Started"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="./CHANGELOG.html" class="navigation navigation-next " aria-label="Next page: Change Logs"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="gitbook/app.js"></script>
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

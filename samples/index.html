@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="bundle.js"></script>
+</head>
+<body>
+<script>
+var env = require('amfe-env');
+document.writeln('<p>' + navigator.userAgent + '</p>');
+document.write('<pre>' + JSON.stringify(env, null, '    ') + '</pre>');
+</script>
+</body>
+</html>
