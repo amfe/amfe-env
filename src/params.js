@@ -1,24 +1,18 @@
-;
-(function(window, lib) {
-    lib.env = lib.env || {};
-    var search = window.location.search.replace(/^\?/,'')
+var params = {};
+const search = window.location.search.replace(/^\?/, '');
 
-    /**
-     * 当前URL的查询串键值对
-     * @member {Object} params
-     * @memberof lib.env
-     */
-    lib.env.params = {};
-    if(search) {
-        var params = search.split('&');
-        for(var i = 0 ; i < params.length; i++) {
-            params[i] = params[i].split('=');
-            try{
-                lib.env.params[params[i][0]] = decodeURIComponent(params[i][1]);
-            } catch(e) {
-                lib.env.params[params[i][0]] = params[i][1];
-            }
+if (search) {
+    let splits = search.split('&');
+    for(let i = 0; i < splits.length; i++) {
+        splits[i] = splits[i].split('=');
+        try{
+            params[splits[i][0]] = decodeURIComponent(splits[i][1]);
+            /* istanbul ignore next */
+        } catch(e) {
+            /* istanbul ignore next */
+            params[splits[i][0]] = splits[i][1];
         }
     }
+}
 
-})(window, window['lib'] || (window['lib'] = {}));
+export default params;

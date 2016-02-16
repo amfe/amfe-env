@@ -1,9 +1,9 @@
 # amfe-env
 
 ![npm version](http://img.shields.io/npm/v/amfe-env.svg)
-![ci status](http://path_to_ci_test)
+![ci status](http://path_to_ci)
 
-## [Visiting Site](http://amfe.github.io/amfe-env/)
+Parsing User-Agent on a mobile device, could detecting what os/browser/app.
 
 ## License
 
