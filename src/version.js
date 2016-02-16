@@ -11,7 +11,7 @@ export default class Version {
             if(isNaN(n1)) {
                 n1 = 0;
             }
-            
+
             /* istanbul ignore if */
             if(isNaN(n2)) {
                 n2 = 0;
