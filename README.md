@@ -1,7 +1,7 @@
 # amfe-env
 
 ![npm version](http://img.shields.io/npm/v/amfe-env.svg)
-![ci status](http://path_to_ci_test)
+![ci status](https://api.travis-ci.org/amfe/amfe-env.svg)
 
 ## [Visiting Site](http://amfe.github.io/amfe-env/)
 

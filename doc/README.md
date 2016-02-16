@@ -1,7 +1,7 @@
 # amfe-env
 
 ![npm version](http://img.shields.io/npm/v/amfe-env.svg)
-![ci status](http://path_to_ci)
+![ci status](https://api.travis-ci.org/amfe/amfe-env.svg)
 
 Parsing User-Agent on a mobile device, could detecting what os/browser/app.
 
