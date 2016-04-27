@@ -4,7 +4,7 @@
 basedir=`dirname "$0"`
 workdir=`dirname "$basedir"`
 tpldir="$workdir/sitetpl"
-tplurl="git@gitlab.alibaba-inc.com:mtb/tpl-website.git"
+tplurl="git@github.com:amfe/tpl-website.git"
 sitedir="$workdir/site"
 docdir="$workdir/doc"
 samplesdir="$workdir/samples"
@@ -30,7 +30,7 @@ update(){
     cd $tpldir
     git init
     git remote add origin $tplurl
-    git pull origin github
+    git pull origin master
     rm -rf .git
     cd ..
 }
@@ -52,6 +52,8 @@ clear(){
 
 build(){
     echo "build website template"
+
+    cp "$workdir/README.md" "$docdir/README.md"
 
     # generate gitbook
     echo "generate gitbook"
@@ -77,21 +79,10 @@ build(){
     rm $sitedir/index.tpl
 }
 
-serve() {
-    if [ -f "$workdir/server.log" ]; then
-        echo "clear server log"
-        rm -f "server.log"
-    fi
-
-    if [ -f "$workdir/server.pid" ]; then
-        echo "stop server"
-        cat "$workdir/server.pid" | xargs kill -9
-    fi
-
-    echo "start server"
-    echo "serving $sitedir on port 4000"
-    nohup serve "$sitedir" -p 4000 > "$workdir/server.log" &
-    echo $! > "$workdir/server.pid"
+serving() {
+    # "start server"
+    # echo "serving $sitedir on port 4000"
+    serve "$sitedir" -p 4000
 }
 
 publish(){
@@ -100,10 +91,17 @@ publish(){
     # clear everythings
     clear
 
+    # get user information
+    username=`git config user.name`
+    useremail=`git config user.email`
+
+
     # init git repo
     echo "entering $sitedir & init git repo"
     cd $sitedir
     git init
+    git config user.name "$username"
+    git config user.email "$useremail"
     git remote add origin $repourl
     git pull --all
     git checkout -b gh-pages
@@ -143,7 +141,7 @@ if [ x"build" == x"$command" ]; then
 fi
 
 if [ x"serve" == x"$command" ]; then
-    serve
+    serving
 fi
 
 if [ x"publish" == x"$command" ]; then

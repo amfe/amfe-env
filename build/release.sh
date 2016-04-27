@@ -18,10 +18,16 @@ fi
 echo "create $releasedir"
 mkdir "$releasedir"
 
+# get user information
+username=`git config user.name`
+useremail=`git config user.email`
+
 # init git repo
 echo "entering $releasedir & init git repo"
 cd $releasedir
 git init
+git config user.name "$username"
+git config user.email "$useremail"
 git remote add origin $repourl
 git pull --all
 git checkout -b release
